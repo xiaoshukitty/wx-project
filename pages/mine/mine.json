@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "tabbar-footer":"/components/tabbar-footer/tabbar-footer"
+  }
+}

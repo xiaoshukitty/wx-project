@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/random/random"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "xiaoshu",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/img/tabbar/home_no.png",
+        "selectedIconPath": "/static/img/tabbar/home_yes.png"
+      },
+      {
+        "pagePath": "pages/random/random",
+        "text": "随机",
+        "iconPath": "/static/img/tabbar/random_no.png",
+        "selectedIconPath": "/static/img/tabbar/random_yes.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/static/img/tabbar/mine_no.png",
+        "selectedIconPath": "/static/img/tabbar/mine_yes.png"
+      }
+    ]
+},
+
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "tabbar-footer":"/components/tabbar-footer/tabbar-footer"
+  }
+}
