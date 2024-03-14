@@ -42,8 +42,8 @@
         }
         distance = (length * 9) - 10;
 
-        console.log('distance--',distance);
-        console.log('rotate--',rotate);
+        console.log('distance--', distance);
+        console.log('rotate--', rotate);
 
 
         // switch (length) {
@@ -76,4 +76,4 @@
 </wxs>
 
 <!-- 添加食物弹框 -->
-<random-pop-up wx:if="{{isShow}}" bind:close="close" bind:addFoodData="addFoodData"></random-pop-up>
+<random-pop-up wx:if="{{isShow}}" isType="{{isType}}" bind:close="close" bind:addFoodData="addFoodData" bind:delFood="delFood"></random-pop-up>

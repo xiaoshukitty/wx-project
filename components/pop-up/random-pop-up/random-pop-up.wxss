@@ -43,3 +43,21 @@
 .line button {
     width: 200rpx;
 }
+
+/* 修改食物 */
+.edit {
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx 20rpx;
+    background-color: #f5f5f5;
+    border-radius: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.edit button {
+    margin: 0 !important;
+    display: block;
+}
+

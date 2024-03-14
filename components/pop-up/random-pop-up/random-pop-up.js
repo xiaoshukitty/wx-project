@@ -3,7 +3,17 @@ Component({
   /**
    * 组件的属性列表
    */
-  properties: {},
+  properties: {
+    isType: {
+      type: String,
+      observer(e) {
+        const that = this;
+        that.setData({
+          foodData: wx.getStorageSync('FOOD')
+        })
+      }
+    }
+  },
 
   /**
    * 组件的初始数据
@@ -11,6 +21,7 @@ Component({
   data: {
     addFood: '', //要添加的食物
     chance: '', //概率
+    foodData: null, //所有的食物
   },
 
   /**
@@ -41,6 +52,20 @@ Component({
         chance
       }
       that.triggerEvent('addFoodData', foodObj);
+    },
+    //删除食物
+    delFood(e) {
+      const that = this;
+      let result = e.currentTarget.dataset.item;
+      let foodData = that.data.foodData;
+      foodData = foodData.filter(item => {
+        return item.name != result.name
+      })
+      wx.setStorageSync('FOOD', foodData)
+      that.setData({
+        foodData: foodData
+      })
+      that.triggerEvent('delFood');
     },
     //修改了输入框的值
     addFoodIpt(e) {

@@ -49,19 +49,24 @@ Page({
       }
     ],
     chance: 1,
+    isType: null, // addFood 是点击添加，editFood 是点击修改
 
     // 弹框
     isShow: false
   },
   onLoad(options) {
-
-  },
-  onShow() {
+    //tabbar
     const that = this;
     let prizeCopy = wx.getStorageSync('FOOD') || that.data.prize;
+    if (!wx.getStorageSync('FOOD')) {
+      wx.setStorageSync('FOOD', that.data.prize)
+    }
     that.setData({
       prize: prizeCopy
     })
+  },
+  onShow() {
+
   },
   onReady() {
 
@@ -73,7 +78,24 @@ Page({
   addFood() {
     const that = this;
     that.setData({
-      isShow: true
+      isShow: true,
+      isType: 'addFood'
+    })
+  },
+  //修改食物
+  editFood() {
+    const that = this;
+    that.setData({
+      isShow: true,
+      isType: 'editFood'
+    })
+  },
+  //通知页面更新
+  delFood() {
+    const that = this;
+    that.close();
+    that.setData({
+      prize: wx.getStorageSync('FOOD'),
     })
   },
   // 关闭弹框
