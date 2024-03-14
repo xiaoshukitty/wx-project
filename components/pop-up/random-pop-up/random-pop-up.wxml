@@ -1,0 +1,14 @@
+<view class="popup">
+    <view class="popup_conter">
+        <view class="line">
+            <input class="ipt"  value="{{addFood}}" bindinput="addFoodIpt" auto-focus placeholder="请输入要添加的食物" />
+        </view>
+        <view class="line">
+            <input class="ipt" value="{{chance}}" bindinput="chanceIpt" placeholder="将输入中奖概率(欺骗自己)" />
+        </view>
+        <view class="line btn">
+            <button type="primary" catchtap="add">添加</button>
+            <button type="primary" catchtap="close">关闭</button>
+        </view>
+    </view>
+</view>

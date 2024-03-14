@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
-    "pages/random/random"
+    "pages/random/random",
+    "pages/random/eatFood/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,7 +13,7 @@
   },
   "tabBar": {
     "custom": true,
-    "list":[
+    "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
@@ -32,11 +33,8 @@
         "selectedIconPath": "/static/img/tabbar/mine_yes.png"
       }
     ]
-},
-
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "tabbar-footer":"/components/tabbar-footer/tabbar-footer"
-  }
+  "usingComponents": {}
 }

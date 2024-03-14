@@ -1,0 +1,45 @@
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(7, 17, 27, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.popup_conter {
+    width: 80%;
+    background: #ffffff;
+    border-radius: 20rpx;
+    box-shadow: 0rem 3.2rpx 3.2rpx 3.2rpx rgb(33 33 33 / 10%);
+    padding: 50rpx 24rpx 20rpx;
+    position: relative;
+}
+
+.line {
+    margin: 50rpx 0;
+    width: 500rpx;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.ipt {
+    border: 1rpx solid silver;
+    height: 70rpx;
+    padding-left: 30rpx;
+    border-radius: 30rpx;
+}
+
+.btn {
+    margin-top: 70rpx;
+    display: flex;
+}
+
+.line button {
+    width: 200rpx;
+}

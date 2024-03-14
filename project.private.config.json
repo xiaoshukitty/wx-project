@@ -9,6 +9,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/random/eatFood/index",
+          "pathName": "pages/random/eatFood/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/random/random",
+          "pathName": "pages/random/random",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/random/random",
           "pathName": "pages/random/random",
           "query": "",
