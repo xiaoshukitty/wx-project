@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/random/random",
-    "pages/random/eatFood/index"
+    "pages/random/eatFood/index",
+    "pages/random/newEatFood/newEatFood"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "random-pop-up":"/components/pop-up/random-pop-up/random-pop-up"
+  },
+  "navigationBarTitleText": "吃什么"
+}

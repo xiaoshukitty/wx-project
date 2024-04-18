@@ -1,15 +1,15 @@
 <view class="popup">
     <view class="popup_conter">
         <view class="add_food" wx:if="{{isType=='addFood'}}">
-            <view class="line">
+            <view class="line" >
                 <input class="ipt" value="{{addFood}}" bindinput="addFoodIpt" auto-focus placeholder="请输入要添加的食物" />
             </view>
-            <view class="line">
+            <view class="line" wx:if="{{isRound!='isRound'}}">
                 <input class="ipt" value="{{chance}}" bindinput="chanceIpt" placeholder="将输入中奖概率(欺骗自己)" />
             </view>
         </view>
         <view class="edit_food" wx:else>
-            <scroll-view type="nested" scroll-y style="height: 600rpx">
+            <scroll-view type="nested" scroll-y style="height: 600rpx"> 
                 <view class="edit" wx:for="{{foodData}}" data-index="{{index}}" wx:key="index">
                     <view>{{item.name}}</view>
                     <button class="mini-btn" type="primary" size="mini" bind:tap="delFood" data-item="{{item}}">删除</button>

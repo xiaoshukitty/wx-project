@@ -1,0 +1,59 @@
+<view class="turntable">
+    <view class="wrapper">
+        <view class="round" wx:if="{{prize && prize.length<=1}}">
+            <text class="round_num">{{prize[0].name}}</text>
+        </view>
+        <view wx:else>
+            <view class="item" wx:for="{{prize}}" wx:key="index" wx:item="item" style="{{computed.rotate(index, prize.length)}}">
+                <view class="item-inner" style="{{computed.inner(prize.length)}}">
+                    <text style="{{computed.text(prize.length)}}">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="point" catchtap="onPoint">
+    </view>
+</view>
+
+<view class="btn">
+    <view class="result">{{result}}</view>
+    <button type="primary" catchtap="onPoint">开始</button>
+    <view class="controls">
+        <button type="primary" catchtap="addFood">添加食物</button>
+        <!-- <button type="primary" catchtap="editFood">修改食物</button> -->
+    </view>
+</view>
+
+<!-- 计算属性 -->
+<wxs module="computed">
+    var rotate = function (index, length) {
+        var inital = - (360 / length / 2)
+        var averageRotate = 360 / length
+        var deg = inital - averageRotate * index
+        return 'transform: rotate(' + deg + 'deg);'
+    }
+    var inner = function (length) {
+        var averageRotate = 360 / length
+        return 'transform: translateX(-300rpx) rotate(' + averageRotate + 'deg);'
+    }
+    var text = function (length) {
+        var distance = 0;
+        var rotate = 40;//倾斜角度
+        if (length <= 4) {
+            rotate = 40;
+        } else {
+            rotate = 120;
+        }
+        distance = (length * 9) - 10;
+
+        return 'transform: translateY(100rpx) translateX(' + distance + 'rpx) rotate(-' + rotate + 'deg);'
+    }
+    module.exports = {
+        rotate: rotate,
+        inner: inner,
+        text: text
+    }
+</wxs>
+
+<!-- 添加食物弹框 -->
+<random-pop-up wx:if="{{isShow}}" isType="{{isType}}" isRound="{{'isRound'}}" bind:close="close" bind:addFoodData="addFoodData" bind:delFood="delFood"></random-pop-up>

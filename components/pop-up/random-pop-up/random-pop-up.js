@@ -12,6 +12,9 @@ Component({
           foodData: wx.getStorageSync('FOOD')
         })
       }
+    },
+    isRound: {
+      type: String,
     }
   },
 
@@ -33,20 +36,23 @@ Component({
       let that = this;
       let addFood = that.data.addFood;
       let chance = that.data.chance;
-      if (addFood == '' || chance == '') {
-        return wx.showToast({
-          title: '必须全部填写',
-          icon: 'none',
-          duration: 500
-        })
-      };
-      if (Number(chance) > 100 || Number(chance) < 0) {
-        return wx.showToast({
-          title: '概率在0-100之前',
-          icon: 'none',
-          duration: 500
-        })
+      if (this.data.isRound !== 'isRound') {
+        if (addFood == '' || chance == '') {
+          return wx.showToast({
+            title: '必须全部填写',
+            icon: 'none',
+            duration: 500
+          })
+        };
+        if (Number(chance) > 100 || Number(chance) < 0) {
+          return wx.showToast({
+            title: '概率在0-100之前',
+            icon: 'none',
+            duration: 500
+          })
+        }
       }
+
       let foodObj = {
         addFood,
         chance

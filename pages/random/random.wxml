@@ -1,7 +1,7 @@
 <view class="random">
     <!-- 吃什么 -->
     <view class="random_skip" data-skip="/pages/random/eatFood/index" bind:tap="skip">吃什么</view>
-    <view class="random_skip" data-skip="2" bind:tap="skip">2</view>
+    <view class="random_skip" data-skip="/pages/random/newEatFood/newEatFood" bind:tap="skip">自己创建</view>
     <view class="random_skip" data-skip="3" bind:tap="skip">3</view>
     <!-- 未完待续～～～ -->
 </view>
