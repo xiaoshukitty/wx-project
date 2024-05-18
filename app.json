@@ -37,5 +37,9 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "usingComponents": {}
+  "usingComponents": {
+    "cartcontrol":"/components/cartcontrol/cartcontrol",
+    "ballAnimation":"/components/ballAnimation/index"
+
+  }
 }

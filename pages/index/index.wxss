@@ -1,0 +1,76 @@
+.header {
+    height: 300rpx;
+    background-color: pink;
+}
+
+.content {
+    display: flex;
+    height: calc(100vh - 520rpx);
+}
+
+.sort {
+    width: 150rpx;
+    background-color: bisque;
+}
+
+.stort_name {
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.active {
+    background-color: yellowgreen;
+}
+
+.product {
+    width: 600rpx;
+    background-color: #fff;
+}
+
+.title {
+    width: 600rpx;
+    height: 60rpx;
+    background-color: palevioletred;
+}
+
+.food_box {
+    display: flex;
+    margin: 20rpx 0 40rpx;
+    padding-left: 20rpx;
+}
+
+.food_left {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+    background-color: blue;
+}
+
+.food_right {
+    width: 400rpx;
+    margin-left: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.food_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.food_num {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 110rpx;
+    left: 0;
+    height: 110rpx;
+    width: 100%;
+    background-color: aquamarine;
+}

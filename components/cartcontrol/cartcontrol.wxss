@@ -1,0 +1,23 @@
+.food_num_box {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.food_quantity {
+    font-size: 28rpx;
+    margin: 10rpx;
+}
+
+
+
+.food_add,
+.food_subtraction {
+    width: 50rpx;
+    height: 50rpx;
+}

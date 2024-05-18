@@ -1,5 +1,39 @@
 <view class="home_page">
-  首页
+  <!-- 头部背景图 -->
+  <view class="header"></view>
+
+  <view class="content">
+    <view class="sort">
+      <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+        <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{ index }}">
+          <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">{{item.sort_name}}</view>
+        </view>
+      </scroll-view>
+
+    </view>
+    <view class="product">
+      <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+        <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
+          <view class="title"> {{ item.sort_name }}</view>
+          <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items">
+            <view class="food_left"></view>
+            <view class="food_right">
+              <view class="food_info">
+                <view class="name">{{ items.name }}</view>
+                <view class="price">￥{{ items.price }}</view>
+              </view>
+              <view class="food_num">
+                <cartcontrol food="{{items}}"></cartcontrol>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <!-- 底部购物车 -->
+  <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"></view>
 </view>
 
 <!-- tabbar 组件 -->

@@ -1,0 +1,11 @@
+<view class="food_num_box">
+    <view class="icon">
+        <image  wx:if="{{foodinfo.count>0}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+    </view>
+    <view class="food_quantity">
+        <text wx:if="{{foodinfo.count>0}}">{{foodinfo.count}}</text>
+    </view>
+    <view class="icon" >
+        <image catch:tap="addFood" class="food_add" src="/static/img/foods/add.png" mode="" />
+    </view>
+</view>

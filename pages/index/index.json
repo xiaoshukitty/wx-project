@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cartcontrol":"/components/cartcontrol/cartcontrol"
+  },
+  "navigationStyle": "custom"
 }
