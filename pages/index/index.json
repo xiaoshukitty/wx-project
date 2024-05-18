@@ -1,6 +1,6 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
-    "cartcontrol":"/components/cartcontrol/cartcontrol"
-  },
-  "navigationStyle": "custom"
+    "ball-animation": "../../components/ballAnimation/index"
+  }
 }

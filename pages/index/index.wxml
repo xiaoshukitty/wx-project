@@ -1,40 +1,62 @@
-<view class="home_page">
-  <!-- 头部背景图 -->
-  <view class="header"></view>
+<!--orderdetail.wxml-->
+<view class="container">
+    <!-- 头部背景图 -->
+    <view class="header"></view>
 
-  <view class="content">
-    <view class="sort">
-      <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
-        <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{ index }}">
-          <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">{{item.sort_name}}</view>
+    <view class="content">
+        <view class="sort">
+            <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+                <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{ index }}">
+                    <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">{{item.sort_name}}</view>
+                </view>
+            </scroll-view>
+
         </view>
-      </scroll-view>
-
-    </view>
-    <view class="product">
-      <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
-        <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
-          <view class="title"> {{ item.sort_name }}</view>
-          <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items">
-            <view class="food_left"></view>
-            <view class="food_right">
-              <view class="food_info">
-                <view class="name">{{ items.name }}</view>
-                <view class="price">￥{{ items.price }}</view>
-              </view>
-              <view class="food_num">
-                <cartcontrol food="{{items}}"></cartcontrol>
-              </view>
-            </view>
-          </view>
+        <view class="product">
+            <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+                <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
+                    <view class="title"> {{ item.sort_name }}</view>
+                    <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items" data-item="{{items}}">
+                        <view class="food_left"></view>
+                        <view class="food_right">
+                            <view class="food_info">
+                                <view class="name">{{ items.name }}</view>
+                                <view class="price">￥{{ items.price }}</view>
+                            </view>
+                            <view class="food_num">
+                                <view class="food_num_flex">
+                                    <view class="icon">
+                                        <image data-item="{{items}}" wx:if="{{items.count>0}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+                                    </view>
+                                    <view class="food_quantity">
+                                        <text wx:if="{{items.count>0}}">{{items.count}}</text>
+                                    </view>
+                                    <view class="icon">
+                                        <image data-item="{{items}}" catch:tap="addFood" class="food_add" src="/static/img/foods/add.png" mode="" />
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
         </view>
-      </scroll-view>
     </view>
-  </view>
 
-  <!-- 底部购物车 -->
-  <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"></view>
+    <!-- 底部购物车 -->
+    <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}">
+        <view class="cart">
+            <image src="/static/img/foods/购物车空.png" mode="" />
+            <view class="round" wx:if="{{cartFoodList.length!=0}}">{{cartFoodList.length}}</view>
+            <view class="sum">总计:{{total}}</view>
+        </view>
+        <view class="submit">
+            <text>去结算</text>
+        </view>
+    </view>
+
+    <!-- 小球动画 -->
+    <block wx:for="{{ballAnimationArray}}">
+        <ball-animation bind:endAnimation="endAnimation" ballIndex="{{index}}" id="ball-{{index}}"></ball-animation>
+    </block>
 </view>
-
-<!-- tabbar 组件 -->
-<!-- <tabbar-footer></tabbar-footer> -->

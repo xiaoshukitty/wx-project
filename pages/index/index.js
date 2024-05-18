@@ -1,67 +1,81 @@
-const app = getApp();
+//logs.js
+const ballFallAnimation = require("../../utils/ballFallAnimation.js");
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     isIphoneX: app.globalData.isIphoneX, //获取机型
+    ballAnimationArray: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], //小球动画
+    keyFrames: [], //动画帧
+    bus_y: -20, //手指点击的位置
+    finishShopCarAnimation: true, //购物车动画是否结束
     foodsList: [{
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '1'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '2'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '3'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '4'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '5'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '6'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '7'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '8'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '9'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '10'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '11'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '12'
         }
       ],
       id: 1,
@@ -70,58 +84,70 @@ Page({
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '13'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '14'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '15'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '16'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '17'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '18'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '19'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '20'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '21'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '22'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '23'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '24'
         }
       ],
       id: 2,
@@ -130,291 +156,386 @@ Page({
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '25'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '26'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: 27
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '28'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '29'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '30'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '31'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '32'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '33'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '34'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '35'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '36'
         }
       ],
-      id: 2,
+      id: 3,
       sort_name: '顿菜'
     }, {
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '37'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '38'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '39'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '40'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '41'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '42'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '43'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '44'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '45'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '46'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '47'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '48'
         }
       ],
-      id: 2,
+      id: 4,
       sort_name: '顿菜'
     }, {
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '49'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '50'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '51'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '52'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '53'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '54'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '55'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '56'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '57'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '58'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '59'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '60'
         }
       ],
-      id: 2,
+      id: 5,
       sort_name: '顿菜'
     }, {
       food: [{
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '61'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '62'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '63'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '64'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '65'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '66'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '67'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '68'
         },
         {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '69'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '70'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '71'
         }, {
           food_img: '',
           name: '小抄黄牛肉',
-          price: '27',
+          price: 27,
+          id: '72'
         }
       ],
-      id: 2,
+      id: 6,
       sort_name: '顿菜'
     }],
     nowIndex: 0, //颜色项
     tabIndex: "scroll-0", //右边瞄点项
+    cartFoodList: [],
+    total: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  onLoad: function () {
 
+    // 设置购物车位置
+    this.busPos = {};
+    this.busPos["x"] = 30; //购物车的位置
+    this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 140;
   },
 
-
-  subscribe() {
-    wx.requestSubscribeMessage({
-      tmplIds: ['Pbur9QdHiyABD54MGFrDUGmi1AXqAreYSuOGmqn4aII'],
-      success(res) {
-        console.log('res---', res);
+  // 添加商品数量
+  addFood(e) {
+    console.log('e', e.target.dataset.item);
+    let slet = this;
+    let foodId = e.target.dataset.item.id;
+    let cartFoodList = slet.data.cartFoodList;
+    let foodsList = slet.data.foodsList;
+    for (let i = 0; i < foodsList.length; i++) {
+      for (let j = 0; j < foodsList[i].food.length; j++) {
+        if (foodsList[i].food[j].id == foodId) {
+          foodsList[i].food[j].count = 1;
+          this.getCartFood('add', foodsList[i].food[j]);
+        }
       }
+    }
+
+
+    slet.setData({
+      foodsList,
+    })
+    console.log('cartFoodList', cartFoodList);
+    slet.tapAdd(e);
+  },
+
+  // 减少商品数量
+  subtractionFood(e) {
+    let slet = this;
+    let foodId = e.target.dataset.item.id;
+    let foodsList = slet.data.foodsList;
+    for (let i = 0; i < foodsList.length; i++) {
+      for (let j = 0; j < foodsList[i].food.length; j++) {
+        if (foodsList[i].food[j].id == foodId) {
+          foodsList[i].food[j].count = 0;
+        }
+      }
+    }
+    slet.setData({
+      foodsList
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+  //购物车数据
+  getCartFood(val, e) {
+    let slet = this;
+    let cartFoodList = slet.data.cartFoodList;
+    let total = slet.data.total;
 
-  },
+    if (val == 'add') {
+      if (cartFoodList.length == 0) {
+        cartFoodList.push(e)
+      } else {
+        const res = cartFoodList.findIndex(item => item.id == e.id);
+        console.log(res);
+        if (res == '-1') {
+          cartFoodList.push(e)
+        }
+      }
+      for (var i = 0; i < cartFoodList.length; i++) {
+        total += cartFoodList[i].price;
+      }
+    }
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
-    this.getTabBar().setData({
-      tabbarIndex: 0
+    slet.setData({
+      cartFoodList,
+      total
     })
+    console.log('cartFoodList--', slet.data.cartFoodList);
+    console.log('total--', slet.data.total);
+
   },
 
   // 左侧点击切换
   tabNav(e) {
     let index = e.currentTarget.dataset.index;
-    console.log('index---', index);
     // this.flag = true // 修复点击分类过快时，会因为滚动条的的滑动，调用scroll触发瞄点
     this.setData({
       nowIndex: index,
       tabIndex: `scroll-${index}`
     })
   },
+
   //右侧滚动左侧切换
   rightScroll(e) {
     // 获取每个goodItem到顶部的距离
@@ -442,36 +563,94 @@ Page({
     })
   },
 
-
-  onHide() {
-
+  onReady: function () {
+    this.ballComponent = [];
+    // Do something when page ready.
+    // 循环获取所有的小球节点
+    for (let i = 0; i < this.data.ballAnimationArray.length; i++) {
+      // 获取小球节点信息
+      this.ballAnimation = this.selectComponent(`#ball-${i}`);
+      // 将小球信息存储
+      this.ballComponent.push(this.ballAnimation);
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
+  tapAdd(e) {
+    // 简单判断手指点击位置是否是上次点击的位置，若是，直接是用上一次计算的关键帧数组
+    // console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
+    if (Math.abs(this.data.bus_y - e.touches["0"].clientY) > 20) {
+      this.data.keyFrames = [];
+      this.data.bus_y = e.touches["0"].clientY;
+      let points = ballFallAnimation.touchOnGoods({
+          x: e.touches["0"].clientX - 20,
+          y: e.touches["0"].clientY - 50,
+        },
+        this.busPos,
+        80
+      );
+      var index = 0,
+        bezier_points = points["bezier_points"];
 
+      var len = bezier_points.length;
+      index = len;
+
+      // 放入关键帧
+      for (let i = index - 1; i > -1; i--) {
+        this.data.keyFrames.push({
+          left: bezier_points[i]["x"] + "px",
+          top: bezier_points[i]["y"] + "px",
+          opacity: i === 0 ? 0 : 1,
+          offset: 0.4,
+        });
+      }
+    }
+    this.startAnimation();
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
+  startAnimation: function () {
+    // 数组循环，每次开启动画弹出一个数组里面，完成动画之后重新排队
+    let id = this.data.ballAnimationArray.pop();
 
+    this.ballComponent[id].startAnimation(this.data.keyFrames);
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
+  // 小球组件动画结束
+  endAnimation(e) {
+    this.data.ballAnimationArray.unshift(e.detail);
 
+    // 开启购物车动画
+    this.startShopCartAnimation();
+
+    // 处理事件逻辑
+    // Tip: 后续事件逻辑最好少使用setData,不然在低端机上表现起来会很不流畅
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
-})
+  // 创建购物车动画
+  startShopCartAnimation() {
+    // 动画没结束，不执行
+    if (!this.data.finishShopCarAnimation) {
+      return;
+    }
+    this.data.finishShopCarAnimation = false;
+    this.animate(
+      "#shopCart",
+      [{
+          scale: [0.8, 0.8],
+        },
+        {
+          scale: [1.1, 1.1],
+        },
+        {
+          scale: [0.9, 0.9],
+        },
+        {
+          scale: [1, 1],
+        },
+      ],
+      400,
+      function () {
+        this.data.finishShopCarAnimation = true;
+      }.bind(this)
+    );
+  },
+});
