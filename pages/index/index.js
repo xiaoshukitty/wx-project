@@ -445,14 +445,49 @@ Page({
     tabIndex: "scroll-0", //右边瞄点项
     cartFoodList: [],
     total: '',
+    cartShow: false, //购物车弹窗
+    customStyle: '',
+    openAnimations: false, //弹出动画
+    overlayStyle: '',
   },
 
   onLoad: function () {
-
     // 设置购物车位置
     this.busPos = {};
     this.busPos["x"] = 30; //购物车的位置
     this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 140;
+  },
+
+  //打开购物车
+  openCartShow() {
+    let slet = this;
+    let cartShow = slet.data.cartShow;
+    let openAnimations = slet.data.openAnimations;
+
+    if (slet.data.cartFoodList.length == 0) {
+      return
+    }
+    if (!cartShow) {
+      cartShow = true;
+      openAnimations=true;
+    } else {
+      cartShow = false;
+      openAnimations=false;
+    }
+
+    slet.setData({
+      cartShow,
+      openAnimations,
+    })
+    
+  },
+
+  //关闭购物车
+  closeCart() {
+    let slet = this;
+    slet.setData({
+      cartShow: false,
+    })
   },
 
   // 添加商品数量
@@ -500,7 +535,7 @@ Page({
   getCartFood(val, e) {
     let slet = this;
     let cartFoodList = slet.data.cartFoodList;
-    let total = slet.data.total;
+    let s = 0;
 
     if (val == 'add') {
       if (cartFoodList.length == 0) {
@@ -512,14 +547,15 @@ Page({
           cartFoodList.push(e)
         }
       }
+
       for (var i = 0; i < cartFoodList.length; i++) {
-        total += cartFoodList[i].price;
+        s += Number(cartFoodList[i].price);
       }
     }
 
     slet.setData({
       cartFoodList,
-      total
+      total: s
     })
     console.log('cartFoodList--', slet.data.cartFoodList);
     console.log('total--', slet.data.total);

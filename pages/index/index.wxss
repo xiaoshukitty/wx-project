@@ -568,6 +568,7 @@
   background-color: aquamarine;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .food_num_box {
@@ -643,3 +644,92 @@
   color: #fff;
   font-size: 30rpx;
 }
+
+.cart_data {
+  position: fixed;
+  bottom: 285rpx;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10rpx 10rpx 0 0;
+  z-index: 100;
+
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  opacity: 1;
+  background: rgba(7, 17, 27, 0.6);
+}
+
+.cart_box {
+  width: 100%;
+}
+
+.cart_close {
+  margin-top: 20rpx;
+  padding-right: 20rpx;
+  width: 100%;
+  height: 50rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+  color: #999999;
+}
+
+.cart_list {}
+
+.cart_item {
+  display: flex;
+  padding: 10rpx 0 20rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+}
+
+.cart_item_box {
+  padding: 20rpx 20rpx 0;
+}
+
+.cart_item_img {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #000;
+  border-radius: 10rpx;
+}
+
+.cart_item_content {
+  width: 640rpx;
+  margin-left: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart_item_food {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price_color {
+  color: red !important;
+}
+
+.open_animations{
+  animation: no-expend ease .9s forwards;
+}
+@keyframes no-expend {
+  from {
+    height: 0rpx;
+    bottom: 0rpx;
+  }
+
+  to {
+    height: 300rpx;
+    bottom: 285rpx;
+  }
+}
+
