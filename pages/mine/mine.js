@@ -8,42 +8,24 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
+    // 1. 调用 wx.login() 方法获取登录登录凭证 code，code 有效期五分钟。
+    wx.login({
+      success: (res) => {
+        console.log(res);
+      }
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
     // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
     this.getTabBar().setData({
       tabbarIndex: 2
     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  getPhoneNumber(e) {
+    // 自己微信要认证才能获取手机号授权，我这暂时用的是测试号授权的 
   },
 
   /**
@@ -52,17 +34,6 @@ Page({
   onPullDownRefresh() {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
 
   }

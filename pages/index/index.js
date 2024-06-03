@@ -741,4 +741,22 @@ Page({
       }.bind(this)
     );
   },
+
+  //开启分享
+  onShareAppMessage: function () {
+    return {
+      title: '小舒餐厅',
+      path: '/pages/index/index'
+    }
+  },
+  // 分享朋友圈
+  onShareTimeline: function () {
+    return {
+      title: '',
+      query: {
+        key: value
+      },
+      imageUrl: ''
+    }
+  },
 });

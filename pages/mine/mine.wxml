@@ -1,6 +1,3 @@
-<text>
-    我的
-</text>
-
-<!-- tabbar 组件 -->
-<!-- <tabbar-footer></tabbar-footer> -->
+<button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <text>登录/注册</text>
+</button>
