@@ -4,7 +4,8 @@
     "pages/mine/mine",
     "pages/random/random",
     "pages/random/eatFood/index",
-    "pages/random/newEatFood/newEatFood"
+    "pages/random/newEatFood/newEatFood",
+    "pages/index/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,8 +39,7 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "cartcontrol":"/components/cartcontrol/cartcontrol",
-    "ballAnimation":"/components/ballAnimation/index"
-
+    "cartcontrol": "/components/cartcontrol/cartcontrol",
+    "ballAnimation": "/components/ballAnimation/index"
   }
 }

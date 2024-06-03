@@ -89,7 +89,7 @@
                 <view class="round" wx:if="{{cartFoodList.length!=0}}">{{cartFoodList.length}}</view>
                 <view class="sum">总计:{{total}}</view>
             </view>
-            <view class="footer_submit">
+            <view class="footer_submit" bind:tap="goOrder">
                 <text>去结算</text>
             </view>
         </view>

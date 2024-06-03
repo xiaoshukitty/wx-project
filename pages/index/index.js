@@ -663,6 +663,18 @@ Page({
     }
   },
 
+  //去订单页面
+  goOrder() {
+    let slet = this;
+    let cartFoodList = JSON.stringify(slet.data.cartFoodList)
+    if (slet.data.cartFoodList.length == 0) {
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/index/order/order?cartFoodList=${cartFoodList}`,
+    })
+  },
+
   tapAdd(e) {
     // 简单判断手指点击位置是否是上次点击的位置，若是，直接是用上一次计算的关键帧数组
     // console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
