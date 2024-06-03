@@ -493,17 +493,29 @@
 
 .header {
   height: 300rpx;
-  background-color: pink;
+}
+
+.header image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.roll {
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #fff;
+  margin-left: 60rpx;
+  color: #FF8C00;
 }
 
 .content {
   display: flex;
-  height: calc(100vh - 520rpx);
+  height: calc(100vh - 660rpx);
 }
 
 .sort {
   width: 150rpx;
-  background-color: bisque;
+  background-color: #e5e5e5;
 }
 
 .stort_name {
@@ -513,7 +525,7 @@
 }
 
 .active {
-  background-color: yellowgreen;
+  background-color: #fff;
 }
 
 .product {
@@ -524,7 +536,13 @@
 .title {
   width: 600rpx;
   height: 60rpx;
-  background-color: palevioletred;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  background-color: #FF8C00;
+}
+.cart_sub{
+  display: flex;
+  align-items: flex-end;
 }
 
 .food_box {
@@ -561,14 +579,42 @@
 
 .footer {
   position: fixed;
-  bottom: 110rpx;
+  bottom: 175rpx;
   left: 0;
   height: 110rpx;
   width: 100%;
-  background-color: aquamarine;
+  z-index: 101;
+  background-color: #fff;
+}
+
+.footer_bg {
+  width: 90%;
+  margin-left: 5%;
   display: flex;
+  height: 100rpx;
+  margin-top: 5rpx;
   justify-content: space-between;
-  z-index: 100;
+}
+
+.footer_cart {
+  width: 75%;
+  background-color: #000;
+  border-radius: 50rpx 0 0 50rpx;
+  display: flex;
+  align-items: center;
+}
+
+.footer_submit {
+  width: 25%;
+  background-color: #FF8C00;
+  border-radius: 0 50rpx 50rpx 0;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.footer_submit text {
+  font-size: 26rpx;
 }
 
 .food_num_box {
@@ -584,7 +630,7 @@
 
 .food_quantity {
   font-size: 28rpx;
-  margin: 10rpx;
+  margin: 10rpx 18rpx;
 }
 
 
@@ -607,37 +653,37 @@
 }
 
 .sum {
-  margin: 60rpx 10rpx 0;
+  color: #fff;
   font-size: 26rpx;
 }
 
 .round {
   position: absolute;
   top: 5rpx;
-  left: 110rpx;
+  left: 150rpx;
   width: 30rpx;
   height: 30rpx;
-  background-color: #d4237a;
+  background-color: #FF8C00;
   border-radius: 50%;
   text-align: center;
   line-height: 30rpx;
   color: #fff;
 }
 
-.cart image {
-  width: 80rpx;
-  height: 80rpx;
-  margin: 15rpx 40rpx;
+.footer_cart image {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 15rpx 30rpx 15rpx 60rpx;
 }
 
 .submit {
-  margin: 15rpx 20rpx;
-  height: 80rpx;
-  width: 200rpx;
+  margin: 20rpx 20rpx;
+  height: 70rpx;
+  width: 140rpx;
   background-color: #d4237a;
   border-radius: 10rpx;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 70rpx;
 }
 
 .submit text {
@@ -647,7 +693,7 @@
 
 .cart_data {
   position: fixed;
-  bottom: 285rpx;
+  bottom: 277rpx !important;
   left: 0;
   width: 100%;
   background-color: #fff;
@@ -682,12 +728,14 @@
   color: #999999;
 }
 
-.cart_list {}
-
 .cart_item {
   display: flex;
-  padding: 10rpx 0 20rpx;
+  padding: 10rpx 0 15rpx;
   border-bottom: 2rpx solid #f8f8f8;
+}
+
+.cart_item:last-child {
+  border-bottom: none;
 }
 
 .cart_item_box {
@@ -718,9 +766,10 @@
   color: red !important;
 }
 
-.open_animations{
+.open_animations {
   animation: no-expend ease .9s forwards;
 }
+
 @keyframes no-expend {
   from {
     height: 0rpx;
@@ -732,4 +781,3 @@
     bottom: 285rpx;
   }
 }
-

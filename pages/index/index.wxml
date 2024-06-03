@@ -1,11 +1,18 @@
 <!--orderdetail.wxml-->
 <view class="container">
     <!-- 头部背景图 -->
-    <view class="header"></view>
+    <view class="header">
+        <image mode="{{widthFix}}" src="/static/img/foods/food.jpg" mode="" />
+    </view>
+
+    <!-- 消息滚动 -->
+    <view class="roll">
+        小舒餐厅开业
+    </view>
 
     <view class="content">
         <view class="sort">
-            <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+            <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 660rpx)':'height: calc(100vh - 630rpx)'}}">
                 <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{ index }}">
                     <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">{{item.sort_name}}</view>
                 </view>
@@ -13,7 +20,7 @@
 
         </view>
         <view class="product">
-            <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 550rpx)':'height: calc(100vh - 520rpx)'}}">
+            <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 660rpx)':'height: calc(100vh - 630rpx)'}}">
                 <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
                     <view class="title"> {{ item.sort_name }}</view>
                     <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items" data-item="{{items}}">
@@ -44,12 +51,12 @@
     </view>
     <view>{{closeAnimations}}</view>
     <!-- 购物车数据 -->
-    <view class="cart_data  {{openAnimations?'open_animations':''}} " wx:if="{{cartShow}}" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}">
+    <!-- <view class="cart_data  {{openAnimations?'open_animations':''}} " wx:if="{{cartShow}}" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"> -->
+    <view class="cart_data  {{openAnimations?'open_animations':''}} " wx:if="{{cartShow}}">
         <view class="cart_box">
-
             <view class="cart_close">
-                <view style="padding-right: 20rpx;text-align: right;height: 50rpx;">清空购物车</view>
-                <scroll-view class="cart_list" scroll-y style="{{isIphoneX?'height:280rpx':'height:230rpx'}}">
+                <view bind:tap="clearCart" style="padding-right: 20rpx;text-align: right;height: 50rpx;">清空购物车</view>
+                <scroll-view class="cart_list" scroll-y style="{{isIphoneX?'max-height:220rpx':'height:190rpx'}}">
                     <view class="cart_item_box">
                         <view class="cart_item" wx:for="{{cartFoodList}}" wx:key="index">
                             <view class="cart_item_img"></view>
@@ -58,7 +65,12 @@
                                     <view class="cart_item_name">{{item.name}}</view>
                                     <view class="cart_item_price price_color">{{item.price}}</view>
                                 </view>
-                                <view class="aaa">123</view>
+                                <view class="cart_sub">
+                                    <view class="icon">
+                                        <image data-item="{{item}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+                                    </view>
+                                </view>
+
                             </view>
                         </view>
                     </view>
@@ -69,18 +81,19 @@
     <view class="mask" wx:if="{{cartShow}}" bindtap='closeCart'></view>
 
     <!-- 底部购物车 -->
-    <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}">
-        <view class="cart">
-            <image bind:tap="openCartShow" src="/static/img/foods/购物车空.png" mode="" />
-            <view class="round" wx:if="{{cartFoodList.length!=0}}">{{cartFoodList.length}}</view>
-            <view class="sum">总计:{{total}}</view>
-        </view>
-        <view class="submit">
-            <text>去结算</text>
+    <!-- <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"> -->
+    <view class="footer">
+        <view class="footer_bg">
+            <view class="footer_cart">
+                <image bind:tap="openCartShow" src="/static/img/foods/cart.png" mode="" />
+                <view class="round" wx:if="{{cartFoodList.length!=0}}">{{cartFoodList.length}}</view>
+                <view class="sum">总计:{{total}}</view>
+            </view>
+            <view class="footer_submit">
+                <text>去结算</text>
+            </view>
         </view>
     </view>
-
-
 
     <!-- 小球动画 -->
     <block wx:for="{{ballAnimationArray}}">

@@ -1,4 +1,3 @@
-//logs.js
 const ballFallAnimation = require("../../utils/ballFallAnimation.js");
 var app = getApp();
 Page({
@@ -11,24 +10,24 @@ Page({
     foodsList: [{
       food: [{
           food_img: '',
-          name: '小抄黄牛肉',
+          name: '小抄黄牛肉1',
           price: 27,
           id: '1'
         },
         {
           food_img: '',
-          name: '小抄黄牛肉',
+          name: '小抄黄牛肉2',
           price: 27,
           id: '2'
         },
         {
           food_img: '',
-          name: '小抄黄牛肉',
+          name: '小抄黄牛肉3',
           price: 27,
           id: '3'
         }, {
           food_img: '',
-          name: '小抄黄牛肉',
+          name: '小抄黄牛肉4',
           price: 27,
           id: '4'
         },
@@ -454,7 +453,7 @@ Page({
   onLoad: function () {
     // 设置购物车位置
     this.busPos = {};
-    this.busPos["x"] = 30; //购物车的位置
+    this.busPos["x"] = 55; //购物车的位置
     this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 140;
   },
 
@@ -469,17 +468,17 @@ Page({
     }
     if (!cartShow) {
       cartShow = true;
-      openAnimations=true;
+      openAnimations = true;
     } else {
       cartShow = false;
-      openAnimations=false;
+      openAnimations = false;
     }
 
     slet.setData({
       cartShow,
       openAnimations,
     })
-    
+
   },
 
   //关闭购物车
@@ -492,11 +491,23 @@ Page({
 
   // 添加商品数量
   addFood(e) {
-    console.log('e', e.target.dataset.item);
     let slet = this;
     let foodId = e.target.dataset.item.id;
-    let cartFoodList = slet.data.cartFoodList;
     let foodsList = slet.data.foodsList;
+    let cartFoodList = slet.data.cartFoodList;
+
+
+    console.log('cartFoodList---', cartFoodList);
+    for (let k = 0; k < cartFoodList.length; k++) {
+      if (cartFoodList[k].id == foodId && cartFoodList[k].count > 0) {
+        return wx.showToast({
+          title: '只允许选一个道菜',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    }
+
     for (let i = 0; i < foodsList.length; i++) {
       for (let j = 0; j < foodsList[i].food.length; j++) {
         if (foodsList[i].food[j].id == foodId) {
@@ -510,7 +521,6 @@ Page({
     slet.setData({
       foodsList,
     })
-    console.log('cartFoodList', cartFoodList);
     slet.tapAdd(e);
   },
 
@@ -519,6 +529,8 @@ Page({
     let slet = this;
     let foodId = e.target.dataset.item.id;
     let foodsList = slet.data.foodsList;
+    let cartFoodList = slet.data.cartFoodList;
+
     for (let i = 0; i < foodsList.length; i++) {
       for (let j = 0; j < foodsList[i].food.length; j++) {
         if (foodsList[i].food[j].id == foodId) {
@@ -526,39 +538,79 @@ Page({
         }
       }
     }
+
+    //去除购物车中的数据
+    for (let k = 0; k < cartFoodList.length; k++) {
+      if (cartFoodList[k].id == foodId) {
+        cartFoodList.splice(k, 1)
+      }
+    }
+    slet.sumCartMoeny();
+
     slet.setData({
-      foodsList
+      foodsList,
+      cartFoodList
     })
+    if (slet.data.cartFoodList.length == 0) {
+      slet.setData({
+        cartShow: false,
+      })
+    }
   },
 
-  //购物车数据
+  //清除购物车数据
+  clearCart() {
+    let slet = this;
+    let foodsList = slet.data.foodsList;
+
+    for (let i = 0; i < foodsList.length; i++) {
+      for (let j = 0; j < foodsList[i].food.length; j++) {
+        foodsList[i].food[j].count = 0
+      }
+    }
+    slet.setData({
+      cartFoodList: [],
+      foodsList,
+      cartShow: false,
+    })
+    slet.sumCartMoeny();
+  },
+
+  //添加购物车数据
   getCartFood(val, e) {
     let slet = this;
     let cartFoodList = slet.data.cartFoodList;
-    let s = 0;
 
     if (val == 'add') {
       if (cartFoodList.length == 0) {
         cartFoodList.push(e)
       } else {
         const res = cartFoodList.findIndex(item => item.id == e.id);
-        console.log(res);
         if (res == '-1') {
           cartFoodList.push(e)
         }
       }
+      slet.sumCartMoeny();
+    }
+    slet.setData({
+      cartFoodList,
+    })
+  },
 
-      for (var i = 0; i < cartFoodList.length; i++) {
-        s += Number(cartFoodList[i].price);
-      }
+
+  //计算购物车价格
+  sumCartMoeny() {
+    let slet = this;
+    let cartFoodList = slet.data.cartFoodList;
+    let s = 0;
+
+    for (var i = 0; i < cartFoodList.length; i++) {
+      s += Number(cartFoodList[i].price);
     }
 
     slet.setData({
-      cartFoodList,
       total: s
     })
-    console.log('cartFoodList--', slet.data.cartFoodList);
-    console.log('total--', slet.data.total);
 
   },
 
