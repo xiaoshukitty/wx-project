@@ -1,6 +1,6 @@
 App({
   data: {
-    appversion: 'v1.0.1', //版本号
+    appversion: 'v1.0.2', //版本号
   },
   onLaunch() {
 
