@@ -666,12 +666,13 @@ Page({
   //去订单页面
   goOrder() {
     let slet = this;
-    let cartFoodList = JSON.stringify(slet.data.cartFoodList)
+    let cartFoodList = JSON.stringify(slet.data.cartFoodList);
+    let total = slet.data.total;
     if (slet.data.cartFoodList.length == 0) {
       return
     }
     wx.navigateTo({
-      url: `/pages/index/order/order?cartFoodList=${cartFoodList}`,
+      url: `/pages/index/order/order?cartFoodList=${cartFoodList}&total=${total}`,
     })
   },
 

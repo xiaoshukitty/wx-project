@@ -1,0 +1,176 @@
+.order {
+    background: #efefef;
+    height: calc(100vh - 100rpx);
+}
+
+.order_box {
+    padding: 20rpx;
+}
+
+.tips {
+    width: 100%;
+}
+
+.order_tips {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fef7e3;
+    padding: 15rpx;
+    border-radius: 10rpx;
+}
+
+.order_flex {
+    display: flex;
+    align-items: center;
+}
+
+.order_tips_text {
+    margin-left: 10rpx;
+    color: #f6c07f;
+}
+
+.order_tips_img {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+
+.block {
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    padding: 20rpx;
+}
+
+
+.foods_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.foods_item {
+    display: flex;
+}
+
+.foods_img {
+    width: 100rpx;
+    height: 100rpx;
+    background-color: pink;
+    border-radius: 10rpx;
+    margin-right: 16rpx;
+}
+
+.foods_name {
+    font-size: 28rpx;
+}
+
+.foods_num {
+    font-size: 24rpx;
+}
+
+.foods_moeny {
+    font-size: 26rpx;
+}
+
+.foods_total {
+    margin-top: 20rpx;
+    text-align: right;
+    padding-top: 10rpx;
+    border-top: 1rpx solid #eee;
+}
+
+.foods_total text:nth-child(1) {
+    font-size: 24rpx;
+}
+
+.foods_total text:nth-child(2) {
+    font-size: 24rpx;
+    margin: 0 5rpx 0 10rpx;
+}
+
+.foods_total text:nth-child(3) {
+    font-size: 30rpx;
+}
+
+.phone {
+
+    border-bottom: 1rpx solid #eee;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15rpx;
+}
+
+.remark {
+    margin-top: 24rpx;
+}
+
+.remark_info {
+    display: flex;
+    align-items: center;
+}
+
+.remark_info text {
+    color: #8a8a8a;
+}
+
+.remark_info image {
+    width: 26rpx;
+    height: 26rpx;
+    margin-left: 6rpx;
+}
+
+
+
+
+.pay {
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    font-size: 28rpx;
+    background-color: #fff;
+    color: #636363;
+    height: 100rpx;
+    box-shadow: 0 -3px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.pay_box {
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    justify-content: space-between;
+    height: 100rpx;
+    color: #000;
+    font-size: 26rpx;
+}
+
+.pay_moeny text:nth-child(1) {
+    margin-right: 12rpx;
+}
+
+.pay_moeny text:nth-child(3) {
+    margin-left: 10rpx;
+    color: #FF8C00;
+}
+
+.pay_moeny text:nth-child(4) {
+    margin-left: 5rpx;
+    font-size: 34rpx;
+    color: #FF8C00;
+}
+
+.pay_btn {
+    height: 70rpx;
+    width: 160rpx;
+    background-color: #FF8C00;
+    text-align: center;
+    line-height: 70rpx;
+    color: #fff;
+    border-radius: 70rpx;
+}
