@@ -1,4 +1,5 @@
 const ballFallAnimation = require("../../utils/ballFallAnimation.js");
+const flattenTree = require('../../utils/index.js')
 var app = getApp();
 Page({
   data: {
@@ -455,7 +456,9 @@ Page({
     this.busPos = {};
     this.busPos["x"] = 55; //购物车的位置
     this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 140;
+    this.getFoodData();
   },
+
 
   //打开购物车
   openCartShow() {
@@ -556,6 +559,24 @@ Page({
         cartShow: false,
       })
     }
+  },
+
+  //获取菜单数据
+  getFoodData() {
+    let slet = this;
+    let foodsList = slet.data.foodsList;
+    console.log('222');
+    app.data.http.post('/dishes/getDishesList').then(res => {
+      console.log(res.data);
+      // flattenTree
+      if (res.code == 200) {
+        const result = flattenTree(res.data, 0);
+        console.log('result---', result);
+        slet.setData({
+          foodsList: result
+        })
+      }
+    })
   },
 
   //清除购物车数据
@@ -667,12 +688,15 @@ Page({
   goOrder() {
     let slet = this;
     let cartFoodList = JSON.stringify(slet.data.cartFoodList);
+
+    // return
     let total = slet.data.total;
     if (slet.data.cartFoodList.length == 0) {
       return
     }
+    const result = encodeURIComponent(cartFoodList)
     wx.navigateTo({
-      url: `/pages/index/order/order?cartFoodList=${cartFoodList}&total=${total}`,
+      url: `/pages/index/order/order?cartFoodList=${result}&total=${total}`,
     })
   },
 

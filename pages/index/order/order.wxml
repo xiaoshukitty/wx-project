@@ -14,7 +14,9 @@
             <view class="foods" wx:for="{{orderList}}" wx:key="index">
                 <view class="foods_box">
                     <view class="foods_item">
-                        <view class="foods_img"></view>
+                        <view class="foods_img">
+                            <image src="{{item.food_img}}" mode=""/>
+                        </view>
                         <view class="foods_info">
                             <view class="foods_name">{{item.name}}</view>
                             <view class="foods_num">x{{itme.count}}</view>

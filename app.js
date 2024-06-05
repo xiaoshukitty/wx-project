@@ -1,6 +1,8 @@
+const http = require('./utils/request.js')
 App({
   data: {
     appversion: 'v1.0.2', //版本号
+    http: http,
   },
   onLaunch() {
     const updateManager = wx.getUpdateManager()

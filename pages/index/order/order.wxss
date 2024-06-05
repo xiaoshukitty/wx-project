@@ -57,9 +57,13 @@
 .foods_img {
     width: 100rpx;
     height: 100rpx;
-    background-color: pink;
     border-radius: 10rpx;
     margin-right: 16rpx;
+}
+.foods_img image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
 }
 
 .foods_name {

@@ -24,7 +24,9 @@
                 <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
                     <view class="title"> {{ item.sort_name }}</view>
                     <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items" data-item="{{items}}">
-                        <view class="food_left"></view>
+                        <view class="food_left">
+                            <image src="{{items.food_img}}" mode=""/>
+                        </view>
                         <view class="food_right">
                             <view class="food_info">
                                 <view class="name">{{ items.name }}</view>
@@ -59,7 +61,9 @@
                 <scroll-view class="cart_list" scroll-y style="{{isIphoneX?'max-height:220rpx':'height:190rpx'}}">
                     <view class="cart_item_box">
                         <view class="cart_item" wx:for="{{cartFoodList}}" wx:key="index">
-                            <view class="cart_item_img"></view>
+                            <view class="cart_item_img">
+                                <image src="{{item.food_img}}" mode=""/>
+                            </view>
                             <view class="cart_item_content">
                                 <view class="cart_item_food">
                                     <view class="cart_item_name">{{item.name}}</view>

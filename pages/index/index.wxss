@@ -11,6 +11,8 @@
 .title {
   width: 18.17rem;
   display: block;
+  position: sticky;
+  top: 0;
 }
 
 .titleText {
@@ -540,7 +542,8 @@
   padding-left: 20rpx;
   background-color: #FF8C00;
 }
-.cart_sub{
+
+.cart_sub {
   display: flex;
   align-items: flex-end;
 }
@@ -555,7 +558,12 @@
   width: 150rpx;
   height: 150rpx;
   border-radius: 10rpx;
-  background-color: blue;
+}
+
+.food_left image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
 }
 
 .food_right {
@@ -745,7 +753,12 @@
 .cart_item_img {
   width: 100rpx;
   height: 100rpx;
-  background-color: #000;
+  border-radius: 10rpx;
+}
+
+.cart_item_img image {
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 10rpx;
 }
 
