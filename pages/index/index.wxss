@@ -1,6 +1,5 @@
 .container {
   width: 750rpx;
-  background: #efefef;
   padding-bottom: 180rpx;
 }
 
