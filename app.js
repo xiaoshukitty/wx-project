@@ -30,6 +30,7 @@ App({
         showCancel: false
       })
     })
+    this.globalData.capsule = wx.getMenuButtonBoundingClientRect();
   },
   onShow: function () {
     let that = this
@@ -42,11 +43,14 @@ App({
         } else {
           that.globalData.isIphoneX = false;
         }
+        that.globalData.system = res;
       }
     })
   },
 
   globalData: {
     isIphoneX: false, //判断机型
+    capsule: {}, //胶囊信息
+    system:{},//设备机型
   }
 })

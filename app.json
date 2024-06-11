@@ -6,7 +6,8 @@
     "pages/random/eatFood/index",
     "pages/random/newEatFood/newEatFood",
     "pages/index/order/order",
-    "pages/orderPage/orderPage"
+    "pages/orderPage/orderPage",
+    "pages/index/menu/menu"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,23 @@
+.nav_box {
+  position: fixed;
+  width: 100%;
+  font-size: 15px;
+  z-index: 999;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* background: green; */
+}
+.back image{
+  width: 40rpx;
+  height: 40rpx;
+}

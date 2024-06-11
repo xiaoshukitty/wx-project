@@ -1,6 +1,3 @@
 {
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "ball-animation": "../../components/ballAnimation/index"
-  }
+  "navigationStyle": "custom"
 }

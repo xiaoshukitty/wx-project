@@ -1,0 +1,25 @@
+<cover-view class='nav_box' style='background:{{navColor}}'>
+  <cover-view style='height:{{s}}px' />
+  <cover-view class='navBar' style='height:{{n}}px'>
+    <cover-view class='content' style='height:{{h}}px'>
+
+      <!-- 导航自定义内容 -->
+      <!-- 1. 插槽 可在使用页面插入所需内容 -->
+      <slot></slot>
+
+      <!-- 2. 选择渲染 可在js页面 设置渲染type属性 不同场景传不同值 -->
+      <block wx:if='{{type == 0}}'>
+        导航一
+      </block>
+      <block wx:if='{{type == 1}}'>
+        导航二
+      </block>
+      <block wx:else>
+        <view class="back">
+          <image bind:tap="toBack" src="/static/img/icon/back.png" mode="" />
+        </view>
+      </block>
+    </cover-view>
+  </cover-view>
+</cover-view>
+<view style='height:{{s+n}}px' /> <!-- 注：占位用 -->
