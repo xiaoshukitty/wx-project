@@ -500,7 +500,6 @@ Page({
     let cartFoodList = slet.data.cartFoodList;
 
 
-    console.log('cartFoodList---', cartFoodList);
     for (let k = 0; k < cartFoodList.length; k++) {
       if (cartFoodList[k].id == foodId && cartFoodList[k].count > 0) {
         return wx.showToast({
@@ -565,13 +564,10 @@ Page({
   getFoodData() {
     let slet = this;
     let foodsList = slet.data.foodsList;
-    console.log('222');
     app.data.http.post('/dishes/getDishesList').then(res => {
-      console.log(res.data);
       // flattenTree
       if (res.code == 200) {
         const result = flattenTree(res.data, 0);
-        console.log('result---', result);
         slet.setData({
           foodsList: result
         })
