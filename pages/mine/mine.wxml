@@ -1,3 +1,10 @@
-<button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-    <text>登录/注册</text>
-</button>
+<view class="mine">
+
+    <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <text>登录/注册</text>
+    </button>
+
+    <button bind:tap="goToOrder">
+        <text>去订单页面</text>
+    </button>
+</view>

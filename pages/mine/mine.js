@@ -28,6 +28,13 @@ Page({
     // 自己微信要认证才能获取手机号授权，我这暂时用的是测试号授权的 
   },
 
+  //去订单页面 
+  goToOrder(){
+    wx.navigateTo({
+      url: '/pages/orderPage/orderPage',
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

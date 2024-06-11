@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "swipe-cell":"/components/swipeCell/swipeCell"
+  },
+  "navigationBarTitleText": "订单"
+}

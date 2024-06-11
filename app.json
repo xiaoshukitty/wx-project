@@ -5,7 +5,8 @@
     "pages/random/random",
     "pages/random/eatFood/index",
     "pages/random/newEatFood/newEatFood",
-    "pages/index/order/order"
+    "pages/index/order/order",
+    "pages/orderPage/orderPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

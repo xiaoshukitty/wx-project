@@ -1,0 +1,14 @@
+<view class="order_page">
+
+  <view class="list">
+    <view class="item" wx:for="{{1}}">
+      <swipe-cell rightWidth="{{65}}" leftWidth="{{0}}">
+        <view class="itemContent" style="text-align: center;">
+          中间内容
+        </view>
+        <!-- <view slot="left" class="itemLeft">左边</view> -->
+        <view slot="right" class="itemRight">删除</view>
+      </swipe-cell>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+/* packageA/member/coupon_v2/test.wxss */
+
+.ceil {
+    position: relative;
+    transition: 0.5s;
+    transform: translateX(0) rotate(0deg);
+  }
+  
+  .right-ceil {
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
+    height: 100%;
+  }
+  
+  .left-ceil {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    height: 100%;
+  }
+  

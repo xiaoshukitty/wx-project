@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/orderPage/orderPage",
+          "pathName": "pages/orderPage/orderPage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/random/eatFood/index",
           "pathName": "pages/random/eatFood/index",
           "query": "",

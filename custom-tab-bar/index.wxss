@@ -65,5 +65,5 @@
     position: relative;
 }
 .selectedColor{
-    color: #ff0000;
+    color: #FF8C00;
 }
