@@ -40,8 +40,16 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取位置方便快速定位到附近的门店"
+    }
+  },
   "usingComponents": {
     "cartcontrol": "/components/cartcontrol/cartcontrol",
     "ballAnimation": "/components/ballAnimation/index"
-  }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ]
 }
