@@ -25,9 +25,9 @@
                 </view>
             </view>
             <view class="center_item ">
-                <view class="center_order ">
+                <view class="center_order " bind:tap="goToOrder">
                     <image src="/static/img/icon/orders.png" mode="" />
-                    <view class="center_order_name">点餐</view>
+                    <view class="center_order_name">订单</view>
                     <view class="center_order_introduce">自助点餐 方便快捷</view>
                 </view>
             </view>

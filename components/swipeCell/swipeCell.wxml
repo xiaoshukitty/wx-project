@@ -1,152 +1,159 @@
 <!--packageA/member/coupon_v2/test.wxml-->
-<view style="overflow-x:hidden;">
-  <view style="display:flex;" 
-		class="ceil"
-		bindtouchstart="{{test.touchStart}}"
-		bindtouchmove="{{test.touchmove}}"
-		bindtouchend="{{test.touchEnd}}"
-        change:prevBox="{{test.closePrevBox}}"
-        prevBox="{{prevBox}}"
-	>
-		<slot></slot>
-		<view class="right-ceil" style="width:{{rightWidth}}px" ><slot name="right"></slot></view>
-        <view class="left-ceil" style="width:{{leftWidth}}px" ><slot name="left"></slot></view>
-  </view>
+<view style="overflow-x:hidden; border-radius: 20rpx;">
+    <view style="display:flex;" class="ceil" bindtouchstart="{{test.touchStart}}" bindtouchmove="{{test.touchmove}}" bindtouchend="{{test.touchEnd}}" change:prevBox="{{test.closePrevBox}}" prevBox="{{prevBox}}">
+        <slot></slot>
+        <view class="right-ceil" style="width:{{rightWidth}}px">
+            <slot name="right"></slot>
+        </view>
+        <view class="left-ceil" style="width:{{leftWidth}}px">
+            <slot name="left"></slot>
+        </view>
+    </view>
 </view>
 
 {{test.rightWidthObserver(rightWidth)}}
 {{test.leftWidthObserver(leftWidth)}}
 
 <wxs module="test">
-  var rightWidth = 0;
-  var leftWidth = 0;
-  var direction=0;
-  var time=0;
-	function rightWidthObserver(w){
-		rightWidth = -w;
-		console.log("rightWidthObserver",w);
+    var rightWidth = 0;
+    var leftWidth = 0;
+    var direction = 0;
+    var time = 0;
+    function rightWidthObserver(w) {
+        rightWidth = -w;
+        console.log("rightWidthObserver", w);
     }
-    function leftWidthObserver(w){
+    function leftWidthObserver(w) {
         leftWidth = w;
     }
 
-// 拖动中时的事件
-function lwmove(event, ins) {
+    // 拖动中时的事件
+    function lwmove(event, ins) {
+        console.log('拖动没');
+        //组件实例
+        var node = ins.selectComponent(".ceil");
 
-    console.log('是否在');
-  //组件实例
-  var node = ins.selectComponent(".ceil");
-  
-  console.log("rightWidthObserver",rightWidth);
-    // 获取拖动点的坐标数据
-    var touch = event.touches[0] || event.changedTouches[0]
-    //拿出拖动开始时存储的数据
-    var moveE = ins.getState();
-  
-    direction = (touch.pageX - moveE.pageX );
-    moveE.pageX = touch.pageX;
-    console.log("向左还是向右",direction);
-    //计算拖动点与拖动开始时的触发点之间的横坐标之差
-    var gap = touch.pageX - moveE.startX + moveE.rX;
+        // console.log("rightWidthObserver", rightWidth);
+        // 获取拖动点的坐标数据
+        var touch = event.touches[0] || event.changedTouches[0]
+        //拿出拖动开始时存储的数据
+        var moveE = ins.getState();
 
-    //获取左滑的距离（拖动中不存储这个数据，而是拖动结束来存储这个数据）
-    var left = moveE.rX;
-    
-    //为向左滑动做处理，开始设置左滑的距离
-    if(gap>=leftWidth) gap = leftWidth;
-    if(gap<=rightWidth) gap = rightWidth;
-    // 设置组件向左滑的距离
-    node.setStyle({
-        "transform": "translateX(" + (gap ) + "px) rotate(0deg)"
-    })
-  
-}
+        direction = (touch.pageX - moveE.pageX);
+        moveE.pageX = touch.pageX;
+        // console.log("向左还是向右", direction);
+        //计算拖动点与拖动开始时的触发点之间的横坐标之差
+        var gap = touch.pageX - moveE.startX + moveE.rX;
 
-// 拖动结束时的事件
-function lwend(event, ins) {
-  console.log("拖动结束");
-  //组件实例
+        //获取左滑的距离（拖动中不存储这个数据，而是拖动结束来存储这个数据）
+        var left = moveE.rX;
 
-  var node = ins.selectComponent(".ceil");
+        console.log('gap-', gap);
+        console.log('rightWidth---', rightWidth);
 
 
-    // 获取离开点的坐标数据
-    var touch = event.touches[0] || event.changedTouches[0]
-    //拿出拖动开始时存储的数据
-    var moveE = ins.getState();
-    var x = touch.pageX;
-
-    //计算拖动点与拖动开始时的触发点之间的横坐标之差
-    var gap = x - moveE.startX+moveE.rX;
-    if(Math.abs(moveE.startY-touch.pageY) > Math.abs(gap) && Math.abs(gap)<20) {
+        //为向左滑动做处理，开始设置左滑的距离
+        if (gap >= leftWidth) gap = leftWidth;
+        // if (gap <= rightWidth) gap = rightWidth;
+        if (gap <= rightWidth) {
+            gap = rightWidth;
+        } else {
+            gap = 0;
+        }
+        // 设置组件向左滑的距离
         node.setStyle({
-            "transform": "translateX("+moveE.rX+"px) rotate(0deg)"
+            "transform": "translateX(" + (gap) + "px) rotate(0deg)"
         })
-        return;
-    };    
 
-    time = getDate().getTime()-time;
-    console.log("time",time);
-    if(gap>=leftWidth) gap = leftWidth;
-    if(gap<=rightWidth) gap = rightWidth;
-    console.log(gap,moveE.rX, "gggg");
-    if(direction>0){    //向右滑
-
-        if(gap<=leftWidth && gap>=0 && moveE.rX == 0){
-            gap = leftWidth;
-        }else if(gap<=leftWidth && gap>=0 && time>300){
-            gap = leftWidth;
-        } else if(moveE.rX == leftWidth){
-            gap = leftWidth;
-        }else {
-            gap = 0;
-        }
-    }else {//向左滑
-        if(gap>=rightWidth && gap<=0 && moveE.rX == 0){
-            gap=rightWidth;
-        }else if(gap>=rightWidth && gap<=0 && time>300){
-            gap=rightWidth;
-        }else if(moveE.rX == rightWidth){
-            gap=rightWidth;
-        }else{
-            gap = 0;
-        }
     }
-    moveE.rX = gap;
-    node.setStyle({
-        "transform": "translateX("+gap+"px) rotate(0deg)"
-      })
-  
-}
-module.exports = {
-	touchStart:function(event, ins){
-		// 获取事件触发点的坐标数据
-		var touch = event.touches[0] || event.changedTouches[0]
-		//存储坐标数据，后期使用
-		var moveE = ins.getState();
-		moveE.startX = touch.pageX;
-		moveE.startY = touch.pageY;
-        direction=0;
-        time = getDate().getTime();
-        ins.callMethod("closePrevBox");
-		//默认左滑当前的距离，也要存储起来
-		if (!moveE.rX) {
-			moveE.rX = 0;
+
+    // 拖动结束时的事件
+    function lwend(event, ins) {
+        console.log("拖动结束");
+        //组件实例
+        return
+
+        var node = ins.selectComponent(".ceil");
+
+
+        // 获取离开点的坐标数据
+        var touch = event.touches[0] || event.changedTouches[0]
+        //拿出拖动开始时存储的数据
+        var moveE = ins.getState();
+        var x = touch.pageX;
+
+        //计算拖动点与拖动开始时的触发点之间的横坐标之差
+        var gap = x - moveE.startX + moveE.rX;
+        if (Math.abs(moveE.startY - touch.pageY) > Math.abs(gap) && Math.abs(gap) < 20) {
+            node.setStyle({
+                "transform": "translateX(" + moveE.rX + "px) rotate(0deg)"
+            })
+            return;
+        };
+
+        time = getDate().getTime() - time;
+        // console.log("time", time);
+        if (gap >= leftWidth) gap = leftWidth;
+        if (gap <= rightWidth) gap = rightWidth;
+        // console.log(gap, moveE.rX, "gggg");
+        if (direction > 0) {    //向右滑
+
+            if (gap <= leftWidth && gap >= 0 && moveE.rX == 0) {
+                gap = leftWidth;
+            } else if (gap <= leftWidth && gap >= 0 && time > 300) {
+                gap = leftWidth;
+            } else if (moveE.rX == leftWidth) {
+                gap = leftWidth;
+            } else {
+                gap = 0;
+            }
+        } else {//向左滑
+            if (gap >= rightWidth && gap <= 0 && moveE.rX == 0) {
+                gap = rightWidth;
+            } else if (gap >= rightWidth && gap <= 0 && time > 300) {
+                gap = rightWidth;
+            } else if (moveE.rX == rightWidth) {
+                gap = rightWidth;
+            } else {
+                gap = 0;
+            }
         }
-        moveE.pageX = 0;
-		console.log('inss', ins.setStyle)
-	},
-    touchmove: lwmove,
-    touchEnd:lwend,
-    closePrevBox:function(newValue, oldValue, ownerInstance, instance){
-        var node = ownerInstance.selectComponent(".ceil");
+        moveE.rX = gap;
         node.setStyle({
-            "transform": "translateX(0px) rotate(0deg)"
+            "transform": "translateX(" + gap + "px) rotate(0deg)"
         })
-    },
-    rightWidthObserver:rightWidthObserver,
-    leftWidthObserver:leftWidthObserver
-}
+
+    }
+    module.exports = {
+        touchStart: function (event, ins) {
+            // 获取事件触发点的坐标数据
+            var touch = event.touches[0] || event.changedTouches[0]
+            //存储坐标数据，后期使用
+            var moveE = ins.getState();
+            moveE.startX = touch.pageX;
+            moveE.startY = touch.pageY;
+            direction = 0;
+            time = getDate().getTime();
+            ins.callMethod("closePrevBox");
+            //默认左滑当前的距离，也要存储起来
+            if (!moveE.rX) {
+                moveE.rX = 0;
+            }
+            moveE.pageX = 0;
+
+            console.log('moveE.startY', moveE.startY)
+
+        },
+
+        touchmove: lwmove,
+        touchEnd: lwend,
+        closePrevBox: function (newValue, oldValue, ownerInstance, instance) {
+            var node = ownerInstance.selectComponent(".ceil");
+            node.setStyle({
+                "transform": "translateX(0px) rotate(0deg)"
+            })
+        },
+        rightWidthObserver: rightWidthObserver,
+        leftWidthObserver: leftWidthObserver
+    }
 </wxs>
-
-

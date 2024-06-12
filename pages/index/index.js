@@ -26,4 +26,11 @@ Page({
       url: '/pages/index/menu/menu',
     })
   },
+
+  //去订单页面
+  goToOrder(){
+    wx.navigateTo({
+      url: '/pages/orderPage/orderPage',
+    })
+  }
 });
