@@ -32,5 +32,12 @@ Page({
     wx.navigateTo({
       url: '/pages/orderPage/orderPage',
     })
-  }
+  },
+
+  //去吃什么转盘页面
+  goToEatFood(){
+    wx.navigateTo({
+      url: '/pages/random/eatFood/index',
+    })
+  },
 });

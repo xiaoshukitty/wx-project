@@ -18,9 +18,9 @@
                 </view>
             </view>
             <view class="center_item center_item_border">
-                <view class="center_order ">
+                <view class="center_order " bind:tap="goToEatFood">
                     <image src="/static/img/icon/equipping.png" mode="" />
-                    <view class="center_order_name">点餐</view>
+                    <view class="center_order_name">转盘</view>
                     <view class="center_order_introduce">自助点餐 方便快捷</view>
                 </view>
             </view>
