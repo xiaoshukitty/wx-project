@@ -6,7 +6,7 @@
             </view>
         </view>
     </view>
-    <view class="point" catchtap="onPoint">
+    <view class="point" >
         <!-- <text>开始</text> -->
     </view>
 </view>
