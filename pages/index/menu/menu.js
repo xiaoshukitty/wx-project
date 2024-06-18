@@ -1,5 +1,5 @@
 const ballFallAnimation = require("../../../utils/ballFallAnimation");
-const flattenTree = require('../../../utils/index.js')
+const utils = require('../../../utils/index.js')
 var app = getApp();
 Page({
   data: {
@@ -567,7 +567,7 @@ Page({
     app.data.http.post('/dishes/getDishesList').then(res => {
       // flattenTree
       if (res.code == 200) {
-        const result = flattenTree(res.data, 0);
+        const result = utils.flattenTree(res.data, 0);
         slet.setData({
           foodsList: result
         })

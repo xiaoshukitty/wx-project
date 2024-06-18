@@ -5,6 +5,7 @@ const http = ({
     ...other
 } = {}) => {
     console.log('url---', url);
+    console.log('params---',params);
     // const baseUrl = 'http://localhost:3000'
     const baseUrl = 'http://192.168.2.102:3000' //本地原因：手机的wifi和电脑的wifi必须同一局域网下，ip地址为电脑wifi的ip地址
     return new Promise((resolve, reject) => {
@@ -17,7 +18,8 @@ const http = ({
             //header: getHeader(),
             ...other,
             complete: (res) => {
-                if (res.statusCode >= 200 && res.statusCode < 300) {
+                console.log('res--22',res);
+                if (res.data.code >= 200 && res.data.code < 300) {
                     resolve(res.data)
                 } else {
                     wx.hideLoading();

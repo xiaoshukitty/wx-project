@@ -178,3 +178,7 @@
     color: #fff;
     border-radius: 70rpx;
 }
+.mb40{
+    margin-bottom: 40rpx;
+    background-color: yellowgreen;
+}

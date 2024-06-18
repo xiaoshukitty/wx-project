@@ -1,10 +1,23 @@
 <view class="mine">
 
-    <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <button class="login-btn mb40" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
         <text>登录/注册</text>
     </button>
 
-    <button bind:tap="goToOrder">
+    <button class="mb40" bind:tap="goToOrder">
         <text>去订单页面</text>
     </button>
+
+    <button class="mb40" bind:tap="allowSubscribeMessage">
+        <text>先订阅</text>
+    </button>
+
+    <button class="mb40" bind:tap="formSubmit">
+        <text>提交</text>
+    </button>
+
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{avatarUrl}}"></image>
+    </button>
+    <input type="nickname" class="weui-input" placeholder="请输入昵称" />
 </view>

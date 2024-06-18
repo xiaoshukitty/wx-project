@@ -1,1 +1,11 @@
-/* pages/mine/mine.wxss */
+.avatar-wrapper image{
+    width: 100rpx;
+    height: 100rpx;
+}
+.weui-input{
+    text-align: center;
+}
+.mb40{
+    margin-bottom: 40rpx;
+    background-color: yellowgreen;
+}
