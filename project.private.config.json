@@ -5,18 +5,6 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/mine/mine",
-          "pathName": "pages/mine/mine",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        }
-      ]
-    }
-  },
+  "condition": {},
   "libVersion": "2.32.3"
 }

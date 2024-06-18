@@ -1,5 +1,6 @@
 const app = getApp();
-const utils = require('../../../utils/index.js')
+const utils = require('../../../utils/index.js');
+const importance = require('../../../utils/importance.js')
 Page({
 
   data: {
@@ -91,7 +92,7 @@ Page({
   //订阅消息
   allowSubscribeMessage() {
     wx.requestSubscribeMessage({
-      tmplIds: [''], // 在此处填写模板id
+      tmplIds: [importance.tmplIds], // 在此处填写模板id
       success(res) {
         console.log('获取权限：', res)
       }

@@ -1,5 +1,6 @@
 var app = getApp();
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const importance = require('../../utils/importance.js');
+const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
 Page({
   data: {
     avatarUrl: defaultAvatarUrl,
@@ -84,7 +85,7 @@ Page({
   //订阅消息
   allowSubscribeMessage() {
     wx.requestSubscribeMessage({
-      tmplIds: [''], // 在此处填写模板id
+      tmplIds: [importance.tmplIds], // 在此处填写模板id
       success(res) {
         console.log('获取权限：', res)
       }
