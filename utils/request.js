@@ -6,7 +6,7 @@ const http = ({
 } = {}) => {
     console.log('url---', url);
     // const baseUrl = 'http://localhost:3000'
-    const baseUrl = 'http://192.168.110.190:3000' //本地原因：手机的wifi和电脑的wifi必须同一局域网下，ip地址为电脑wifi的ip地址
+    const baseUrl = 'http://192.168.2.102:3000' //本地原因：手机的wifi和电脑的wifi必须同一局域网下，ip地址为电脑wifi的ip地址
     return new Promise((resolve, reject) => {
         wx.request({
             url: baseUrl + url,

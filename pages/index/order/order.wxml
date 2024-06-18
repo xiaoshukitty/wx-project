@@ -6,7 +6,7 @@
                     <image class="order_tips_img" src="/static/img/foods/megaphone.png" mode="" />
                     <view class="order_tips_text">温馨提示：请适量点餐、避免浪费</view>
                 </view>
-                <image class="order_tips_img" src="/static/img/foods/x.png" mode="" />
+                <!-- <image class="order_tips_img" src="/static/img/foods/x.png" mode="" /> -->
             </view>
         </view>
 
@@ -19,7 +19,7 @@
                         </view>
                         <view class="foods_info">
                             <view class="foods_name">{{item.name}}</view>
-                            <view class="foods_num">x{{itme.count}}</view>
+                            <view class="foods_num">x1</view>
                         </view>
                     </view>
                     <view class="foods_moeny">
