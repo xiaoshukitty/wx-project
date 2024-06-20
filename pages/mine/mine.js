@@ -5,12 +5,15 @@ Page({
   data: {
     avatarUrl: defaultAvatarUrl,
     formInfo: {
-      storeName:'小舒餐厅',
+      storeName: '小舒餐厅',
       orderName: '小舒',
-      dishes:'红烧茄子',
+      dishes: '红烧茄子',
       submitDate: '2024-2-2',
       moeny: '20'
-    }
+    },
+    show: false,
+    nickname: '',
+    avatar: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
   },
 
   onLoad(options) {
@@ -20,6 +23,37 @@ Page({
     //     console.log(res);
     //   }
     // })
+  },
+
+
+  onShow() {
+    // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
+    this.getTabBar().setData({
+      tabbarIndex: 2
+    })
+  },
+
+  //获取头像
+  openAvatar() {
+    this.setData({
+      show: true
+    })
+  },
+
+  //关闭头像弹框
+  colseMask() {
+    this.setData({
+      show: false
+    })
+  },
+
+  //更新头像
+  updateUser(e) {
+    console.log('e.detail.avatar---',e);
+    this.setData({
+      avatar: e.detail.avatar,
+      nickname: e.detail.nickname
+    })
   },
 
   //获取个人微信头像昵称，新版本
@@ -32,11 +66,9 @@ Page({
     })
   },
 
-  onShow() {
-    // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
-    this.getTabBar().setData({
-      tabbarIndex: 2
-    })
+
+  submit() {
+    console.log(this.data.nickname);
   },
 
   //提交下单

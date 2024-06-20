@@ -48,8 +48,14 @@ Component({
   methods: {
     //tabbar 跳转
     switchTab(e) {
-      const data = e.currentTarget.dataset
-      const url = data.path
+      const data = e.currentTarget.dataset;
+      const url = data.path;
+      console.log(getCurrentPages()[0].route);
+      if(getCurrentPages()[0].route==url){
+        return
+      }
+      
+      
       wx.switchTab({
         url
       })

@@ -1,0 +1,32 @@
+<view class="container" wx:if="{{show}}">
+    <view class="cover {{showCoverAnimation?'cover-fade-in':''}}" catch:touchmove="return" bind:tap="colseMask"></view>
+    <view class="improve-box {{showBoxAnimation?'slade-in':''}}" catch:touchmove="return">
+        <view class="title flex-start-horizontal">
+            <view class="logo">
+                <image class="icon" src="xxxx"></image>
+            </view>
+            <view class="mini-name">恋爱小清单 申请</view>
+        </view>
+
+        <view class="tips">
+            <view class="tip">获取你的昵称、头像</view>
+            <view class="use-for">用于个人中心、共享清单、恋人圈以及分享时展示</view>
+        </view>
+        <view class="info-item ">
+            <view class="label">头像</view>
+            <view class="input-content flex-full more">
+                <button class="avatar-wrapper " open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                    <image class="avatar" src="{{avatarUrl}}"></image>
+                </button>
+            </view>
+        </view>
+        <view class="info-item">
+            <view class="label">昵称</view>
+            <input type="nickname" model:value="{{nickname}}" class="input-content flex-full more" placeholder="请输入昵称" />
+        </view>
+        <view class="btns">
+            <button bind:tap="close" class="cancel" bind:tap="colseMask">拒绝</button>
+            <button bind:tap="save" class="save">保存</button>
+        </view>
+    </view>
+</view>

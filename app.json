@@ -47,7 +47,9 @@
   },
   "usingComponents": {
     "cartcontrol": "/components/cartcontrol/cartcontrol",
-    "ballAnimation": "/components/ballAnimation/index"
+    "ballAnimation": "/components/ballAnimation/index",
+    "authorizedUser": "/components/authorizedUser/index"
+
   },
   "requiredPrivateInfos": [
     "getLocation"
