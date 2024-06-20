@@ -38,6 +38,12 @@ Page({
     wx.navigateTo({
       url: '/pages/index/menu/menu'
     })
+  },
+
+  goToMap(){
+    wx.navigateTo({
+      url: '/pages/map/map',
+    })
   }
 
 })

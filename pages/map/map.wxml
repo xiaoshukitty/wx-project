@@ -1,0 +1,7 @@
+<map id="map" name="citymap" longitude="{{longitude}}" latitude="{{latitude}}" polyline="{{polyline}}" markers="{{markers}}" circles="{{circles}}" scale="{{scale}}" subkey="XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX" show-location show-compass enable-rotate style="width: 750rpx; height: 1200rpx;">
+    <cover-view class="cover-view" bindtap="controltap">
+        <cover-image class="station" src="https://linli-oss.vecommunity.com/xchx/icon/position.jpg"></cover-image>
+    </cover-view>
+</map>
+
+<button style="background-color: yellowgreen;" bind:tap="goTo">出发</button>

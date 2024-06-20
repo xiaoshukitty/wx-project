@@ -4,7 +4,7 @@
     <view class="order_item" wx:for="{{20}}">
       <swipe-cell rightWidth="{{65}}" leftWidth="{{0}}">
         <view class="itemContent">
-          <view class="item_box">
+          <view class="item_box" catch:tap="goToMap">
             <view class="order_address">
               <view bind:tap="goToAddress">小舒餐厅</view>
               <image bind:tap="goToAddress" src="/static/img/icon/rightArrow.png" mode="" />

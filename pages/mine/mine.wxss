@@ -1,7 +1,7 @@
 .mine {
     padding: 200rpx 40rpx 0;
     background-image: linear-gradient(to bottom, #FF8C00, #fff);
-    height: 100vh;
+    height: calc(100vh - 200rpx);
 }
 
 .user {

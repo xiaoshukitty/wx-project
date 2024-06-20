@@ -7,7 +7,8 @@
     "pages/random/newEatFood/newEatFood",
     "pages/index/order/order",
     "pages/orderPage/orderPage",
-    "pages/index/menu/menu"
+    "pages/index/menu/menu",
+    "pages/map/map"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -49,7 +50,6 @@
     "cartcontrol": "/components/cartcontrol/cartcontrol",
     "ballAnimation": "/components/ballAnimation/index",
     "authorizedUser": "/components/authorizedUser/index"
-
   },
   "requiredPrivateInfos": [
     "getLocation"
