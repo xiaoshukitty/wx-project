@@ -4,10 +4,10 @@
     <view class="order_item" wx:for="{{20}}">
       <swipe-cell rightWidth="{{65}}" leftWidth="{{0}}">
         <view class="itemContent">
-          <view class="item_box" catch:tap="goToMap">
+          <view class="item_box" bind:tap="goToMap">
             <view class="order_address">
-              <view bind:tap="goToAddress">小舒餐厅</view>
-              <image bind:tap="goToAddress" src="/static/img/icon/rightArrow.png" mode="" />
+              <view catch:tap="goToAddress">小舒餐厅</view>
+              <image catch:tap="goToAddress" src="/static/img/icon/rightArrow.png" mode="" />
             </view>
             <view class="order_img">
               <image src="https://cos3.solepic.com/20211003/b_5589972202110031536255943.jpg" mode="" />
@@ -22,12 +22,12 @@
               </view>
             </view>
             <view class="order_again">
-              <view bind:tap="again" bind:tap="goToMenu">再来一单</view>
+              <view catch:tap="again" catch:tap="goToMenu">再来一单</view>
             </view>
           </view>
         </view>
         <!-- <view slot="left" class="itemLeft">左边</view> -->
-        <view slot="right" class="itemRight" bind:tap="delOrder">删除</view>
+        <view slot="right" class="itemRight" catch:tap="delOrder">删除</view>
       </swipe-cell>
     </view>
   </view>

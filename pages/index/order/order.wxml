@@ -48,14 +48,14 @@
             </view>
         </view>
 
-        <view class="block">
+        <!-- <view class="block">
             <button class="mb40" bind:tap="allowSubscribeMessage">
                 <text>订阅</text>
             </button>
             <button class="mb40" bind:tap="formSubmit">
                 <text>提交</text>
             </button>
-        </view>
+        </view> -->
     </view>
 
     <view class="pay" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}">
@@ -66,7 +66,7 @@
                 <text>¥</text>
                 <text>{{total}}</text>
             </view>
-            <view class="pay_btn">提交支付</view>
+            <view class="pay_btn" bind:tap="payOrder">下单购买</view>
         </view>
     </view>
 </view>

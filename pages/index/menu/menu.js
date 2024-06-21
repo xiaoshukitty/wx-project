@@ -456,10 +456,15 @@ Page({
     this.busPos = {};
     this.busPos["x"] = 58; //购物车的位置
     this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 90;
-    this.getFoodData();
+    // this.getFoodData();
   },
 
-
+  onShow: function () {
+    this.getFoodData();
+    this.setData({
+      cartFoodList: [],
+    })
+  },
   //打开购物车
   openCartShow() {
     let slet = this;

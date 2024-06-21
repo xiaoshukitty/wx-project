@@ -56,7 +56,7 @@ Page({
       // 成功后会返回code，将code提交给服务器
       success: res => {
         // 获取到code
-        console.log('获取到code:' + res.code)
+        // console.log('获取到code:' + res.code)
         wx.request({
           url: 'http://192.168.2.102:3000/wxMsg/getOpenId',
           method: 'POST',
@@ -64,7 +64,8 @@ Page({
             code: res.code
           },
           success: res => {
-            console.log('res--', formInfo);
+            wx.hideToast();
+            // console.log('res--', formInfo);
             if (res.data.request == 'ok') {
               wx.request({
                 url: 'http://192.168.2.102:3000/wxMsg/sendTempMsg',
@@ -78,6 +79,11 @@ Page({
                       title: '订阅消息发送成功',
                       icon: 'success'
                     })
+                    setTimeout(() => {
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    }, 2000)
                   }
                 }
               })
@@ -88,13 +94,39 @@ Page({
     })
   },
 
+  //下单购买
+  payOrder() {
+    let slet = this;
+    wx.showModal({
+      title: '提示', //提示的标题
+      content: '下单需要允许订阅通知这样才会收到菜品通知、请允许。菜马上做好、请稍等！', //提示的内容
+      success: function (res) {
+        if (res.confirm) {
+          slet.allowSubscribeMessage();
+        } else if (res.cancel) {
+          // console.log('用户点击了取消')
+        }
+      }
+    })
+  },
 
   //订阅消息
   allowSubscribeMessage() {
+    let slet = this;
     wx.requestSubscribeMessage({
       tmplIds: [importance.tmplIds], // 在此处填写模板id
       success(res) {
-        console.log('获取权限：', res)
+        // console.log('获取权限：', res.Pbur9QdHiyABD54MGFrDUKhiLMHKOUOQLSWhMMePbQ4)
+        let result = res.Pbur9QdHiyABD54MGFrDUKhiLMHKOUOQLSWhMMePbQ4;
+        if (result == 'accept') {
+          wx.showToast({
+            title: '正在下单~~~', //提示的内容
+            duration: 2000, //持续的时间
+            icon: 'loading', //图标有success、error、loading、none四种
+            mask: true //显示透明蒙层 防止触摸穿透
+          })
+          slet.formSubmit();
+        }
       }
     })
   },
