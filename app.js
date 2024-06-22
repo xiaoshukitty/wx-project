@@ -1,7 +1,7 @@
 const http = require('./utils/request.js')
 App({
   data: {
-    appversion: 'v1.0.4', //版本号
+    appversion: 'v1.0.5', //版本号
     http: http,
   },
   onLaunch() {
