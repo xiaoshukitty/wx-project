@@ -58,10 +58,12 @@ Page({
     longitude: '',
     latitude: '',
     routeData: [],
-    scale: 16
+    scale: 16,
+    type: ''
 
   },
   onLoad: function (options) {
+    console.log('---', options.type);
     let slet = this;
     let markers = slet.data.markers;
     wx.getLocation({
@@ -76,39 +78,71 @@ Page({
         slet.setData({
           longitude: res.longitude,
           latitude: res.latitude,
-          markers
+          markers,
+          type: options.type
         })
-        wx.request({
-          // url: 'https://apis.map.qq.com/ws/direction/v1/bicycling/?from=30.742813,114.884986&to=30.700608,115.065863&output=json&callback=cb&key=' + 'XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX',
-          url: `https://apis.map.qq.com/ws/direction/v1/bicycling/?from=${res.latitude + ',' + res.longitude}&to=30.700608,115.065863&output=json&callback=cb&key=XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX`,
+        if (options.type == 'purchase') {
+          let markers = [{
+            id: 1,
+            latitude: 30.742813,
+            longitude: 114.884986,
+            iconPath: '/static/img/icon/startingPoint.png',
+            width: 40,
+            height: 40,
+            anchor: {
+              x: 0.4,
+              y: 0.5
+            },
+            callout: {
+              content: '小舒餐厅',
+              color: '#000',
+              fontSize: 12,
+              borderWidth: 2,
+              borderRadius: 4,
+              bgColor: '#fff',
+              padding: 5,
+              display: 'ALWAYS',
+              textAlign: 'center'
+            }
+          }]
 
-          success: function (res) {
-            coors = res.data.result.routes[0].polyline;
-            // console.log('coors1--', coors);
-            //解压
-            for (var i = 2; i < coors.length; i++) {
-              coors[i] = coors[i - 2] + coors[i] / 1000000;
+          slet.setData({
+            markers: markers
+          })
+        } else {
+          wx.request({
+            // url: 'https://apis.map.qq.com/ws/direction/v1/bicycling/?from=30.742813,114.884986&to=30.700608,115.065863&output=json&callback=cb&key=' + 'XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX',
+            url: `https://apis.map.qq.com/ws/direction/v1/bicycling/?from=${res.latitude + ',' + res.longitude}&to=30.700608,115.065863&output=json&callback=cb&key=XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX`,
+
+            success: function (res) {
+              coors = res.data.result.routes[0].polyline;
+              // console.log('coors1--', coors);
+              //解压
+              for (var i = 2; i < coors.length; i++) {
+                coors[i] = coors[i - 2] + coors[i] / 1000000;
+              }
+              // console.log('coors2--', coors);
+              //划线 
+              var b = [];
+              for (var i = 0; i < coors.length; i = i + 2) {
+                b[i / 2] = {
+                  latitude: coors[i],
+                  longitude: coors[i + 1]
+                };
+              }
+              slet.setData({
+                polyline: [{
+                  points: b,
+                  color: "#5996FF", //线的颜色
+                  width: 4,
+                  dottedLine: false,
+                }],
+                routeData: b
+              })
             }
-            // console.log('coors2--', coors);
-            //划线 
-            var b = [];
-            for (var i = 0; i < coors.length; i = i + 2) {
-              b[i / 2] = {
-                latitude: coors[i],
-                longitude: coors[i + 1]
-              };
-            }
-            slet.setData({
-              polyline: [{
-                points: b,
-                color: "#5996FF", //线的颜色
-                width: 4,
-                dottedLine: false,
-              }],
-              routeData: b
-            })
-          }
-        })
+          })
+        }
+
       }
     })
 

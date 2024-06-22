@@ -8,7 +8,8 @@
     "pages/index/order/order",
     "pages/orderPage/orderPage",
     "pages/index/menu/menu",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/index/order/remark/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

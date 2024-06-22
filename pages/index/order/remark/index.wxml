@@ -1,0 +1,8 @@
+<view class="remark">
+    <view class="textarea-wrp">
+        <textarea auto-focus="true" maxlength="20" class="ipt" placeholder="口味备注！" bindinput="bindinput" value="{{value}}">
+            <view class="num">{{num}}/20</view>
+        </textarea>
+    </view>
+    <button class="btn" bind:tap="btn">完成</button>
+</view>

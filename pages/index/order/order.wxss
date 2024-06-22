@@ -60,7 +60,8 @@
     border-radius: 10rpx;
     margin-right: 16rpx;
 }
-.foods_img image{
+
+.foods_img image {
     width: 100rpx;
     height: 100rpx;
     border-radius: 10rpx;
@@ -178,7 +179,25 @@
     color: #fff;
     border-radius: 70rpx;
 }
-.mb40{
+
+.mb40 {
     margin-bottom: 40rpx;
     background-color: yellowgreen;
+}
+
+.canteen-name {
+    font-size: 28rpx;
+    display: flex;
+    align-items: center;
+}
+
+.canteen-name image {
+    width: 25rpx;
+    height: 25rpx;
+    margin-left: 6rpx;
+}
+
+.distance {
+    font-size: 24rpx;
+    margin-top: 8rpx;
 }

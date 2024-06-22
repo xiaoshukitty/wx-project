@@ -15,11 +15,13 @@ Page({
       moeny: '20'
     },
     dishesStr: '红烧茄子',
+    remarkTips: '口味、偏好等要求'
   },
 
   onLoad(options) {
     let slet = this;
     const result = JSON.parse(decodeURIComponent(options.cartFoodList));
+
     const str = result.reduce((e, i) => {
       return e + '、' + i.name;
     }, '');
@@ -31,7 +33,37 @@ Page({
   },
 
   onShow() {
+    let slet = this;
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1];
 
+    if (currPage.data.remark) {
+      slet.setData({
+        remarkTips: currPage.data.remark,
+      });
+    }
+  },
+
+  //去地图
+  goToMap() {
+    wx.navigateTo({
+      url: '/pages/map/map?type=purchase'
+    })
+  },
+
+  //去备注页面
+  goToRemark() {
+    let slet = this;
+    let remarkTips = slet.data.remarkTips;
+    if (remarkTips != '口味、偏好等要求') {
+      wx.navigateTo({
+        url: `/pages/index/order/remark/index?remarkTips=${remarkTips}`,
+      })
+    } else {
+      wx.navigateTo({
+        url: './remark/index',
+      })
+    }
   },
 
   //提交下单

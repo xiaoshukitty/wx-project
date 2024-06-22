@@ -4,4 +4,4 @@
     </cover-view>
 </map>
 
-<button style="background-color: yellowgreen;" bind:tap="goTo">出发</button>
+<button wx:if="{{type!=='purchase'}}" style="background-color: yellowgreen;" bind:tap="goTo">出发</button>
