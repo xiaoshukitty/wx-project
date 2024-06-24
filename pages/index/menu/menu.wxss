@@ -705,7 +705,7 @@
 
 .cart_data {
   position: fixed;
-  bottom: 0rpx !important;
+  bottom: 70rpx !important;
   left: 0;
   width: 100%;
   background-color: #fff;

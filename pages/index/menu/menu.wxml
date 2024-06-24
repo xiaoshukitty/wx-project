@@ -63,7 +63,7 @@
         <view class="cart_box">
             <view class="cart_close">
                 <view bind:tap="clearCart" style="padding-right: 20rpx;text-align: right;height: 50rpx;">清空购物车</view>
-                <scroll-view class="cart_list" scroll-y style="{{isIphoneX?'max-height:220rpx':'max-heigh:190rpx'}}">
+                <scroll-view class="cart_list" scroll-y style="height: 260rpx;">
                     <view class="cart_item_box">
                         <view class="cart_item" wx:for="{{cartFoodList}}" wx:key="index">
                             <view class="cart_item_img">

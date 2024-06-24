@@ -201,3 +201,6 @@
     font-size: 24rpx;
     margin-top: 8rpx;
 }
+.scroll-y{
+    height: calc(100vh - 170rpx);
+}

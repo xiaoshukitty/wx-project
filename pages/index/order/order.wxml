@@ -1,63 +1,65 @@
 <view class="order">
-    <view class="order_box">
-        <view class="tips">
-            <view class="order_tips">
-                <view class="order_flex">
-                    <image class="order_tips_img" src="/static/img/foods/megaphone.png" mode="" />
-                    <view class="order_tips_text">温馨提示：请适量点餐、避免浪费</view>
+
+    <scroll-view scroll-y class="scroll-y">
+        <view class="order_box">
+            <view class="tips">
+                <view class="order_tips">
+                    <view class="order_flex">
+                        <image class="order_tips_img" src="/static/img/foods/megaphone.png" mode="" />
+                        <view class="order_tips_text">温馨提示：请适量点餐、避免浪费</view>
+                    </view>
+                    <!-- <image class="order_tips_img" src="/static/img/foods/x.png" mode="" /> -->
                 </view>
-                <!-- <image class="order_tips_img" src="/static/img/foods/x.png" mode="" /> -->
             </view>
-        </view>
 
-        <view class="block">
-            <view class="canteen-name" bind:tap="goToMap">
-                <view>小舒餐厅</view>
-                <image src="/static/img/icon/rightArrow.png" mode="" />
+            <view class="block">
+                <view class="canteen-name" bind:tap="goToMap">
+                    <view>小舒餐厅</view>
+                    <image src="/static/img/icon/rightArrow.png" mode="" />
+                </view>
+                <view class="distance">直线距离5.2km｜爱尔兰岛</view>
             </view>
-            <view class="distance">直线距离5.2km｜爱尔兰岛</view>
-        </view>
 
 
-        <view class="block">
-            <view class="foods" wx:for="{{orderList}}" wx:key="index">
-                <view class="foods_box">
-                    <view class="foods_item">
-                        <view class="foods_img">
-                            <image src="{{item.food_img}}" mode="" />
+            <view class="block">
+                <view class="foods" wx:for="{{orderList}}" wx:key="index">
+                    <view class="foods_box">
+                        <view class="foods_item">
+                            <view class="foods_img">
+                                <image src="{{item.food_img}}" mode="" />
+                            </view>
+                            <view class="foods_info">
+                                <view class="foods_name">{{item.name}}</view>
+                                <view class="foods_num">x1</view>
+                            </view>
                         </view>
-                        <view class="foods_info">
-                            <view class="foods_name">{{item.name}}</view>
-                            <view class="foods_num">x1</view>
+                        <view class="foods_moeny">
+                            <text>¥{{item.price}}</text>
                         </view>
                     </view>
-                    <view class="foods_moeny">
-                        <text>¥{{item.price}}</text>
+                </view>
+                <view class="foods_total">
+                    <text>合计</text>
+                    <text>¥</text>
+                    <text>{{total}}</text>
+                </view>
+            </view>
+
+            <view class="block">
+                <view class="phone info">
+                    <view class="phone_name">预留手机号</view>
+                    <input style="text-align: right;" placeholder="请输入您的预留电话" type="text" />
+                </view>
+                <view class="remark info" bind:tap="goToRemark">
+                    <view class="">备注</view>
+                    <view class="remark_info">
+                        <text>{{remarkTips}}</text>
+                        <image src="/static/img/foods/right_arrow.png" mode="" />
                     </view>
                 </view>
             </view>
-            <view class="foods_total">
-                <text>合计</text>
-                <text>¥</text>
-                <text>{{total}}</text>
-            </view>
-        </view>
 
-        <view class="block">
-            <view class="phone info">
-                <view class="phone_name">预留手机号</view>
-                <input style="text-align: right;" placeholder="请输入您的预留电话" type="text" />
-            </view>
-            <view class="remark info" bind:tap="goToRemark">
-                <view class="">备注</view>
-                <view class="remark_info">
-                    <text>{{remarkTips}}</text>
-                    <image src="/static/img/foods/right_arrow.png" mode="" />
-                </view>
-            </view>
-        </view>
-
-        <!-- <view class="block">
+            <!-- <view class="block">
             <button class="mb40" bind:tap="allowSubscribeMessage">
                 <text>订阅</text>
             </button>
@@ -65,7 +67,10 @@
                 <text>提交</text>
             </button>
         </view> -->
-    </view>
+        </view>
+    </scroll-view>
+
+
 
     <view class="pay" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}">
         <view class="pay_box">
