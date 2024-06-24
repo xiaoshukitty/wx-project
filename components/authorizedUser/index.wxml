@@ -16,7 +16,7 @@
             <view class="label">头像</view>
             <view class="input-content flex-full more">
                 <button class="avatar-wrapper " open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-                    <image class="avatar" src="{{avatarUrl}}"></image>
+                    <image class="avatar-wrapper-img" class="avatar" src="{{avatarUrl}}"></image>
                 </button>
             </view>
         </view>

@@ -40,7 +40,7 @@
     display: flex;
 }
 
-.line button {
+.line-btn {
     width: 200rpx;
 }
 
@@ -56,7 +56,7 @@
     margin-bottom: 10rpx;
 }
 
-.edit button {
+.mini-btn{
     margin: 0 !important;
     display: block;
 }

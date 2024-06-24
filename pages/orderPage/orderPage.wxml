@@ -1,7 +1,7 @@
 <view class="order_page">
 
   <view class="order_list">
-    <view class="order_item" wx:for="{{foodList}}">
+    <view class="order_item" wx:for="{{foodList}}" wx:key="index">
       <swipe-cell rightWidth="{{65}}" leftWidth="{{0}}">
         <view class="itemContent">
           <view class="item_box" bind:tap="goToMap">
@@ -12,7 +12,7 @@
             <view class="order_img">
               <scroll-view scroll-x style="width:600rpx; display: flex;">
                 <view class="food_info">
-                  <view class="food_item" wx:for="{{item.order_data}}" wx:for-item="foodItem" data-item="{{foodItem}}">
+                  <view class="food_item" wx:for="{{item.order_data}}" wx:for-item="foodItem" data-item="{{foodItem}}" wx:key="index1">
                     <image class="food_img" src="{{foodItem.food_img}}" mode="" />
                     <view>{{foodItem.name}}</view>
                   </view>

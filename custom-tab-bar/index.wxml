@@ -2,7 +2,7 @@
     <view class="navigation">
         <block wx:for="{{tabbarList}}" wx:key="index" class="btn">
             <view data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" class="'btn' {{tabbarIndex === index ? 'on' : 'off'}}">
-                <image src="{{tabbarIndex === index  ? item.selectedIconPath : item.iconPath}}"></image>
+                <image class="btn-img" src="{{tabbarIndex === index  ? item.selectedIconPath : item.iconPath}}"></image>
                 <view class="txt {{tabbarIndex === index ? 'selectedColor' : ''}}">{{item.text}}</view>
             </view>
         </block>

@@ -53,9 +53,6 @@
     border-radius: 50%;
 }
 
-.improve-box .title .mini-name {
-    /*margin-bottom: 2rpx;*/
-}
 
 .improve-box .tips {
     margin-bottom: 20rpx;
@@ -75,7 +72,6 @@
 }
 
 .improve-box .info-item {
-    /*margin-bottom: 30rpx;*/
     display: flex;
     align-items: center;
     border-bottom: 1rpx solid #f0f0f0;
@@ -156,7 +152,7 @@
     background-color: #fff !important;
     padding: 6rpx 0 !important;
 }
-.avatar-wrapper image {
+.avatar-wrapper-img {
     position: absolute;
     top: 15rpx;
     left: 0;

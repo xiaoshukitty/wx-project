@@ -17,8 +17,8 @@
             </scroll-view>
         </view>
         <view class="line btn">
-            <button type="primary" catchtap="add" wx:if="{{isType=='addFood'}}">添加</button>
-            <button type="primary" catchtap="close">关闭</button>
+            <button class="line-btn" type="primary" catchtap="add" wx:if="{{isType=='addFood'}}">添加</button>
+            <button class="line-btn" type="primary" catchtap="close">关闭</button>
         </view>
     </view>
 </view>

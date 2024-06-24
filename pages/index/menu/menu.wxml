@@ -111,7 +111,7 @@
     </view>
 
     <!-- 小球动画 -->
-    <block wx:for="{{ballAnimationArray}}">
+    <block wx:for="{{ballAnimationArray}}" wx:key="index"> 
         <ball-animation bind:endAnimation="endAnimation" ballIndex="{{index}}" id="ball-{{index}}"></ball-animation>
     </block>
 </view>

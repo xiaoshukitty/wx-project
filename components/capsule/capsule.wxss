@@ -17,7 +17,7 @@
   align-items: center;
   /* background: green; */
 }
-.back image{
+.back-img{
   width: 40rpx;
   height: 40rpx;
 }

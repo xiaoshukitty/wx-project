@@ -16,7 +16,7 @@
       </block>
       <block wx:else>
         <view class="back">
-          <image bind:tap="toBack" src="/static/img/icon/back.png" mode="" />
+          <image class="back-img" bind:tap="toBack" src="/static/img/icon/back.png" mode="" />
         </view>
       </block>
     </cover-view>
