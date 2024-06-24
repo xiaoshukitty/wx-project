@@ -63,7 +63,6 @@ Page({
 
   },
   onLoad: function (options) {
-    console.log('---', options.type);
     let slet = this;
     let markers = slet.data.markers;
     wx.getLocation({
@@ -116,12 +115,10 @@ Page({
 
             success: function (res) {
               coors = res.data.result.routes[0].polyline;
-              // console.log('coors1--', coors);
               //解压
               for (var i = 2; i < coors.length; i++) {
                 coors[i] = coors[i - 2] + coors[i] / 1000000;
               }
-              // console.log('coors2--', coors);
               //划线 
               var b = [];
               for (var i = 0; i < coors.length; i = i + 2) {

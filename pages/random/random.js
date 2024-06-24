@@ -20,9 +20,7 @@ Page({
 
   },
   skip(e) {
-    console.log('e---', e);
     const route = e.currentTarget.dataset.skip;
-    console.log('e---', route);
     wx.navigateTo({
       url: route
     })

@@ -67,7 +67,6 @@ Page({
       'winnning': chanceNum
     });
 
-    console.log('prize', this.data.prize);
     that.close();
     that.setData({
       prize: prize
@@ -124,7 +123,6 @@ Page({
     const averageRotate = 360 / this.data.prize.length
     // 是否有抽奖机会
     if (this.data.chance === 0) {
-      console.log('没有抽奖机会');
       return
     }
     // 防止转动时点击开始按钮

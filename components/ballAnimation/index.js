@@ -13,7 +13,6 @@ Component({
 
 	observers: {
 		"ballIndex": function (newValue) {
-			// console.log(newValue)
 		}
 	},
 

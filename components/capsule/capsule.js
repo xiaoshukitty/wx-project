@@ -28,7 +28,6 @@ Component({
   methods: {
     //返回上一页
     toBack() {
-      console.log('222');
       this.triggerEvent('toBack');
     }
   }

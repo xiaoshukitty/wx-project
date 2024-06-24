@@ -451,19 +451,25 @@ Page({
     overlayStyle: '',
   },
 
-  onLoad: function () {
+  onLoad: function (options) {
     // 设置购物车位置
     this.busPos = {};
     this.busPos["x"] = 58; //购物车的位置
     this.busPos["y"] = wx.getSystemInfoSync().windowHeight - 90;
+    if (options.orderFoodList) {
+      let aaa = JSON.parse(decodeURIComponent(options.orderFoodList));
+      this.setData({
+        cartFoodList: aaa
+      })
+    }
     // this.getFoodData();
   },
 
   onShow: function () {
     this.getFoodData();
-    this.setData({
-      cartFoodList: [],
-    })
+    // this.setData({
+    //   cartFoodList: [],
+    // })
   },
   //打开购物车
   openCartShow() {
@@ -569,10 +575,22 @@ Page({
   getFoodData() {
     let slet = this;
     let foodsList = slet.data.foodsList;
+    let cartFoodList = slet.data.cartFoodList;
     app.data.http.post('/dishes/getDishesList').then(res => {
-      // flattenTree
       if (res.code == 200) {
+        if (cartFoodList.length > 0) {
+          for (let i = 0; i < res.data.length; i++) {
+            for (let k = 0; k < cartFoodList.length; k++) {
+              if (res.data[i].id === cartFoodList[k].id) {
+                res.data[i].count = cartFoodList[k].count
+              }
+            }
+          }
+        }
+
+
         const result = utils.flattenTree(res.data, 0);
+
         slet.setData({
           foodsList: result
         })
@@ -799,7 +817,6 @@ Page({
   },
   //返回上页面
   toBack() {
-    console.log(111);
     wx.navigateBack({
       delta: 1
     })

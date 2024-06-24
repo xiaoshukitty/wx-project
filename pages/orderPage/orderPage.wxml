@@ -1,7 +1,7 @@
 <view class="order_page">
 
   <view class="order_list">
-    <view class="order_item" wx:for="{{20}}">
+    <view class="order_item" wx:for="{{foodList}}">
       <swipe-cell rightWidth="{{65}}" leftWidth="{{0}}">
         <view class="itemContent">
           <view class="item_box" bind:tap="goToMap">
@@ -10,24 +10,31 @@
               <image catch:tap="goToAddress" src="/static/img/icon/rightArrow.png" mode="" />
             </view>
             <view class="order_img">
-              <image src="https://cos3.solepic.com/20211003/b_5589972202110031536255943.jpg" mode="" />
+              <scroll-view scroll-x style="width:600rpx; display: flex;">
+                <view class="food_info">
+                  <view class="food_item" wx:for="{{item.order_data}}" wx:for-item="foodItem" data-item="{{foodItem}}">
+                    <image class="food_img" src="{{foodItem.food_img}}" mode="" />
+                    <view>{{foodItem.name}}</view>
+                  </view>
+                </view>
+              </scroll-view>
             </view>
             <view class="order_info">
               <view class="">
-                2023-08-31 20:07:52
+                {{item.order_date}}
               </view>
               <view class="">
-                <text>共1件</text>
-                <text class="order_success_moeny">¥4</text>
+                <text>共{{item.order_data.length}}件</text>
+                <text class="order_success_moeny">¥{{item.order_money}}元</text>
               </view>
             </view>
             <view class="order_again">
-              <view catch:tap="again" catch:tap="goToMenu">再来一单</view>
+              <view catch:tap="again" catch:tap="goToMenu" data-item="{{item}}">再来一单</view>
             </view>
           </view>
         </view>
         <!-- <view slot="left" class="itemLeft">左边</view> -->
-        <view slot="right" class="itemRight" catch:tap="delOrder">删除</view>
+        <view slot="right" class="itemRight" catch:tap="delOrder" data-item="{{item}}">删除</view>
       </swipe-cell>
     </view>
   </view>

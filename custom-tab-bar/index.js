@@ -50,7 +50,6 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset;
       const url = data.path;
-      console.log(getCurrentPages()[0].route);
       if(getCurrentPages()[0].route==url){
         return
       }

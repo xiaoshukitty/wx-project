@@ -88,7 +88,6 @@ Page({
       // 成功后会返回code，将code提交给服务器
       success: res => {
         // 获取到code
-        // console.log('获取到code:' + res.code)
         wx.request({
           url: 'http://192.168.2.102:3000/wxMsg/getOpenId',
           method: 'POST',
@@ -97,7 +96,6 @@ Page({
           },
           success: res => {
             wx.hideToast();
-            // console.log('res--', formInfo);
             if (res.data.request == 'ok') {
               wx.request({
                 url: 'http://192.168.2.102:3000/wxMsg/sendTempMsg',
@@ -136,7 +134,6 @@ Page({
         if (res.confirm) {
           slet.allowSubscribeMessage();
         } else if (res.cancel) {
-          // console.log('用户点击了取消')
         }
       }
     })
@@ -148,9 +145,9 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: [importance.tmplIds], // 在此处填写模板id
       success(res) {
-        // console.log('获取权限：', res.Pbur9QdHiyABD54MGFrDUKhiLMHKOUOQLSWhMMePbQ4)
         let result = res.Pbur9QdHiyABD54MGFrDUKhiLMHKOUOQLSWhMMePbQ4;
         if (result == 'accept') {
+          slet.addFoodsList();
           wx.showToast({
             title: '正在下单~~~', //提示的内容
             duration: 2000, //持续的时间
@@ -162,4 +159,20 @@ Page({
       }
     })
   },
+
+  //下单
+  addFoodsList() {
+    let slet = this;
+    let orderList = slet.data.orderList;
+    let total = slet.data.total;
+    let prarms = {
+      order_date: utils.formatTime(),
+      order_money: total,
+      order_data: JSON.stringify(orderList),
+    }
+    app.data.http.post('/orderList/addFood', prarms).then(res => {
+      if (res.code == 200) {
+      }
+    })
+  }
 })

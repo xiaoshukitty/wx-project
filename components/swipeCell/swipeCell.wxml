@@ -21,7 +21,6 @@
     var time = 0;
     function rightWidthObserver(w) {
         rightWidth = -w;
-        console.log("rightWidthObserver", w);
     }
     function leftWidthObserver(w) {
         leftWidth = w;
@@ -29,11 +28,9 @@
 
     // 拖动中时的事件
     function lwmove(event, ins) {
-        console.log('拖动没');
         //组件实例
         var node = ins.selectComponent(".ceil");
 
-        // console.log("rightWidthObserver", rightWidth);
         // 获取拖动点的坐标数据
         var touch = event.touches[0] || event.changedTouches[0]
         //拿出拖动开始时存储的数据
@@ -41,16 +38,11 @@
 
         direction = (touch.pageX - moveE.pageX);
         moveE.pageX = touch.pageX;
-        // console.log("向左还是向右", direction);
         //计算拖动点与拖动开始时的触发点之间的横坐标之差
         var gap = touch.pageX - moveE.startX + moveE.rX;
 
         //获取左滑的距离（拖动中不存储这个数据，而是拖动结束来存储这个数据）
         var left = moveE.rX;
-
-        console.log('gap-', gap);
-        console.log('rightWidth---', rightWidth);
-
 
         //为向左滑动做处理，开始设置左滑的距离
         if (gap >= leftWidth) gap = leftWidth;
@@ -69,7 +61,6 @@
 
     // 拖动结束时的事件
     function lwend(event, ins) {
-        console.log("拖动结束");
         //组件实例
         return
 
@@ -92,10 +83,8 @@
         };
 
         time = getDate().getTime() - time;
-        // console.log("time", time);
         if (gap >= leftWidth) gap = leftWidth;
         if (gap <= rightWidth) gap = rightWidth;
-        // console.log(gap, moveE.rX, "gggg");
         if (direction > 0) {    //向右滑
 
             if (gap <= leftWidth && gap >= 0 && moveE.rX == 0) {
@@ -141,7 +130,6 @@
             }
             moveE.pageX = 0;
 
-            console.log('moveE.startY', moveE.startY)
 
         },
 

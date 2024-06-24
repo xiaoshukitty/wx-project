@@ -20,7 +20,6 @@ Page({
     // 1. 调用 wx.login() 方法获取登录登录凭证 code，code 有效期五分钟。
     // wx.login({
     //   success: (res) => {
-    //     console.log(res);
     //   }
     // })
   },
@@ -49,7 +48,6 @@ Page({
 
   //更新头像
   updateUser(e) {
-    console.log('e.detail.avatar---',e);
     this.setData({
       avatar: e.detail.avatar,
       nickname: e.detail.nickname
@@ -68,7 +66,6 @@ Page({
 
 
   submit() {
-    console.log(this.data.nickname);
   },
 
   //提交下单
@@ -81,7 +78,6 @@ Page({
       // 成功后会返回code，将code提交给服务器
       success: res => {
         // 获取到code
-        console.log('获取到code:' + res.code)
         wx.request({
           url: 'http://192.168.2.102:3000/wxMsg/getOpenId',
           method: 'POST',
@@ -89,7 +85,6 @@ Page({
             code: res.code
           },
           success: res => {
-            console.log('res--', formInfo);
             if (res.data.request == 'ok') {
               wx.request({
                 url: 'http://192.168.2.102:3000/wxMsg/sendTempMsg',
@@ -119,7 +114,6 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: [importance.tmplIds], // 在此处填写模板id
       success(res) {
-        console.log('获取权限：', res)
       }
     })
   },

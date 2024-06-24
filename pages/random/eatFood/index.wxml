@@ -42,9 +42,6 @@
         }
         distance = (length * 9) - 10;
 
-        console.log('distance--', distance);
-        console.log('rotate--', rotate);
-
 
         // switch (length) {
         //     case 4:

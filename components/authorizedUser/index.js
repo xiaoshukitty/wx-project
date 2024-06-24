@@ -44,7 +44,6 @@ Component({
       };
       wx.setStorageSync('nickname', this.data.nickname);
       wx.setStorageSync('avatar', this.data.avatarUrl);
-      console.log('22');
       this.triggerEvent('updateUser', {
         nickname: this.data.nickname,
         avatar: this.data.avatarUrl
