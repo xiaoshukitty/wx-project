@@ -590,7 +590,7 @@ Page({
 
 
         const result = utils.flattenTree(res.data, 0);
-
+        slet.sumCartMoeny();
         slet.setData({
           foodsList: result
         })
