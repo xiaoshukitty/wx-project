@@ -576,7 +576,10 @@ Page({
     let slet = this;
     let foodsList = slet.data.foodsList;
     let cartFoodList = slet.data.cartFoodList;
-    app.data.http.post('/dishes/getDishesList').then(res => {
+    let params = {
+      name: ''
+    }
+    app.data.http.post('/dishes/getDishesList', params).then(res => {
       if (res.code == 200) {
         if (cartFoodList.length > 0) {
           for (let i = 0; i < res.data.length; i++) {
