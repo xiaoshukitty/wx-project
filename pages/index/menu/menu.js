@@ -510,6 +510,15 @@ Page({
     let foodsList = slet.data.foodsList;
     let cartFoodList = slet.data.cartFoodList;
 
+    console.log(e.currentTarget.dataset.item.inventory);
+    let inventory = e.currentTarget.dataset.item.inventory;
+    if (inventory == 0) {
+      return wx.showToast({
+        title: '当前菜品没有材料',
+        icon: 'none',
+        duration: 1000
+      })
+    }
 
     for (let k = 0; k < cartFoodList.length; k++) {
       if (cartFoodList[k].id == foodId && cartFoodList[k].count > 0) {
