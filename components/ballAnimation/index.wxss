@@ -9,7 +9,7 @@
   overflow: hidden;
   left: 50%;
   top: 50%;
-  z-index: +99;
+  z-index: 1001;
   opacity: 1;
   /* background:rgba(0,133,207,1); */
   background:#FF8C00;

@@ -29,7 +29,9 @@
                                 <image src="{{item.food_img}}" mode="" />
                             </view>
                             <view class="foods_info">
-                                <view class="foods_name">{{item.name}}</view>
+                                <view class="foods_name">{{item.name}}
+                                    <text wx:for="{{item.attribute}}" wx:for-item="items" data-item="{{items}}" wx:if="{{items.attrChecked}}">({{items.attrName}})</text>
+                                </view>
                                 <view class="foods_num">x1</view>
                             </view>
                         </view>

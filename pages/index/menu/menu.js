@@ -449,6 +449,8 @@ Page({
     customStyle: '',
     openAnimations: false, //弹出动画
     overlayStyle: '',
+    showAttr: false, //是否打开属性面板
+    selectFoods: {}, //点击点菜品信息
   },
 
   onLoad: function (options) {
@@ -462,7 +464,10 @@ Page({
         cartFoodList: aaa
       })
     }
+
+    wx.removeStorageSync('CartFoodS')
     // this.getFoodData();
+
   },
 
   onShow: function () {
@@ -505,13 +510,25 @@ Page({
 
   // 添加商品数量
   addFood(e) {
+
     let slet = this;
-    let foodId = e.target.dataset.item.id;
+    let foodId
+    let inventory
+    let selectFoods = slet.data.selectFoods;
+
+
+    if (e.detail.id) {
+      foodId = e.detail.id;
+      inventory = e.detail.inventory;
+    } else {
+      foodId = e.target.dataset.item.id;
+      inventory = e.currentTarget.dataset.item.inventory;
+    }
+
     let foodsList = slet.data.foodsList;
     let cartFoodList = slet.data.cartFoodList;
 
-    console.log(e.currentTarget.dataset.item.inventory);
-    let inventory = e.currentTarget.dataset.item.inventory;
+
     if (inventory == 0) {
       return wx.showToast({
         title: '当前菜品没有材料',
@@ -534,22 +551,41 @@ Page({
       for (let j = 0; j < foodsList[i].food.length; j++) {
         if (foodsList[i].food[j].id == foodId) {
           foodsList[i].food[j].count = 1;
+          selectFoods = foodsList[i].food[j];
+
+          //判断是多规格的数据
+          if (e.detail.id) {
+            foodsList[i].food[j] = e.detail;
+            foodsList[i].food[j].count = 1;
+          }
           this.getCartFood('add', foodsList[i].food[j]);
+
         }
       }
     }
 
-
     slet.setData({
       foodsList,
+      selectFoods
     })
-    slet.tapAdd(e);
+
+    if (!e.detail.id) {
+      slet.tapAdd(e);
+    }
+
   },
 
   // 减少商品数量
   subtractionFood(e) {
     let slet = this;
-    let foodId = e.target.dataset.item.id;
+    let selectFoods = slet.data.selectFoods;
+    let foodId
+    if (e.detail.id) {
+      foodId = e.detail.id;
+    } else {
+      foodId = e.target.dataset.item.id;
+    }
+
     let foodsList = slet.data.foodsList;
     let cartFoodList = slet.data.cartFoodList;
 
@@ -557,6 +593,7 @@ Page({
       for (let j = 0; j < foodsList[i].food.length; j++) {
         if (foodsList[i].food[j].id == foodId) {
           foodsList[i].food[j].count = 0;
+          selectFoods = foodsList[i].food[j]
         }
       }
     }
@@ -568,10 +605,11 @@ Page({
       }
     }
     slet.sumCartMoeny();
-
+    wx.setStorageSync('CartFoodS', cartFoodList)
     slet.setData({
       foodsList,
-      cartFoodList
+      cartFoodList,
+      selectFoods
     })
     if (slet.data.cartFoodList.length == 0) {
       slet.setData({
@@ -579,6 +617,33 @@ Page({
       })
     }
   },
+
+  //打开菜品规格
+  openAttr(e) {
+    let slet = this;
+    let selectFoods = e.currentTarget.dataset.item;
+
+
+    this.busPos["x"] = 80 //购物车的位置
+    slet.setData({
+      showAttr: true,
+      selectFoods
+    })
+
+    //传递数据给 chooseAttr 组件
+    slet.selectComponent("#chooseAttr").specData(selectFoods);
+  },
+
+  //关闭菜品规格
+  closePopUp() {
+    let slet = this;
+    this.busPos["x"] = 58; //购物车的位置
+    slet.setData({
+      showAttr: false,
+    })
+  },
+
+
 
   //获取菜单数据
   getFoodData() {
@@ -644,9 +709,14 @@ Page({
       }
       slet.sumCartMoeny();
     }
+
+
     slet.setData({
       cartFoodList,
     })
+
+    wx.setStorageSync('CartFoodS', slet.data.cartFoodList);
+
   },
 
 
@@ -663,7 +733,6 @@ Page({
     slet.setData({
       total: s
     })
-
   },
 
   // 左侧点击切换
@@ -733,7 +802,7 @@ Page({
 
   tapAdd(e) {
     // 简单判断手指点击位置是否是上次点击的位置，若是，直接是用上一次计算的关键帧数组
-    // console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
+    console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
     if (Math.abs(this.data.bus_y - e.touches["0"].clientY) > 20) {
       this.data.keyFrames = [];
       this.data.bus_y = e.touches["0"].clientY;
@@ -773,7 +842,6 @@ Page({
   // 小球组件动画结束
   endAnimation(e) {
     this.data.ballAnimationArray.unshift(e.detail);
-
     // 开启购物车动画
     this.startShopCartAnimation();
 

@@ -38,7 +38,7 @@
                                 <view class="price price_color">￥{{ items.price }}</view>
                             </view>
                             <view class="food_num">
-                                <view class="food_num_flex">
+                                <view class="food_num_flex" wx:if="{{items.attribute==null}}">
                                     <view class="icon">
                                         <image data-item="{{items}}" wx:if="{{items.count>0}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
                                     </view>
@@ -49,6 +49,9 @@
                                         <image data-item="{{items}}" catch:tap="addFood" class="food_add" src="/static/img/foods/add.png" mode="" />
                                     </view>
                                 </view>
+                                <view class="attr" data-item="{{items}}" wx:else bind:tap="openAttr">
+                                    <view>选规格</view>
+                                </view>
                             </view>
                         </view>
                     </view>
@@ -58,7 +61,6 @@
     </view>
     <view>{{closeAnimations}}</view>
     <!-- 购物车数据 -->
-    <!-- <view class="cart_data  {{openAnimations?'open_animations':''}} " wx:if="{{cartShow}}" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"> -->
     <view class="cart_data  {{openAnimations?'open_animations':''}} " wx:if="{{cartShow}}">
         <view class="cart_box">
             <view class="cart_close">
@@ -71,7 +73,9 @@
                             </view>
                             <view class="cart_item_content">
                                 <view class="cart_item_food">
-                                    <view class="cart_item_name">{{item.name}}</view>
+                                    <view class="cart_item_name">{{item.name}}
+                                        <text wx:for="{{item.attribute}}" wx:for-item="items" data-item="{{items}}" wx:if="{{items.attrChecked}}">({{items.attrName}})</text>
+                                    </view>
                                     <view class="cart_item_price price_color">{{item.price}}</view>
                                 </view>
                                 <view class="cart_sub">
@@ -93,10 +97,12 @@
 
     </view>
 
+    <!-- 选规格 -->
+    <chooseAttr id="chooseAttr" wx:if="{{showAttr}}" selectFoods="{{selectFoods}}" bind:closePopUp="closePopUp" bind:addFood="addFood" bind:subtractionFood="subtractionFood"></chooseAttr>
+
     <view class="mask" wx:if="{{cartShow}}" bindtap='closeCart'></view>
 
     <!-- 底部购物车 -->
-    <!-- <view class="footer" style="{{isIphoneX==true?'padding-bottom: 66rpx;':''}}"> -->
     <view class="footer">
         <view class="footer_bg">
             <view class="footer_cart">
@@ -111,7 +117,7 @@
     </view>
 
     <!-- 小球动画 -->
-    <block wx:for="{{ballAnimationArray}}" wx:key="index"> 
+    <block wx:for="{{ballAnimationArray}}" wx:key="index">
         <ball-animation bind:endAnimation="endAnimation" ballIndex="{{index}}" id="ball-{{index}}"></ball-animation>
     </block>
 </view>

@@ -1,0 +1,144 @@
+.attr-mask {
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+    opacity: 1;
+    background: rgba(7, 17, 27, 0.6); */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(7, 17, 27, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.center-mask {
+    width: 92%;
+    background: #ffffff;
+    border-radius: 20rpx;
+    box-shadow: 0rem 3.2rpx 3.2rpx 3.2rpx rgb(33 33 33 / 10%);
+    padding: 30rpx 0;
+    color: #333333;
+}
+
+.h3 {
+    font-size: 32rpx;
+
+    font-weight: bold;
+}
+
+.attr-close {
+    width: 30rpx;
+    height: 30rpx;
+    z-index: 99;
+    right: 24rpx;
+    margin-left: 10rpx;
+}
+
+.attr-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36rpx;
+}
+
+.specification {
+    padding: 0 36rpx;
+    margin-top: 30rpx;
+}
+
+.attr-text {
+    margin: 30rpx 0 20rpx;
+}
+
+
+.attr-list {
+    display: flex;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.attr-item {
+    box-sizing: border-box;
+    padding: 8rpx 20rpx;
+    background: #f2f2f2;
+    border-radius: 10rpx;
+    color: #333333;
+    text-align: center;
+    margin-right: 20rpx;
+}
+
+.attr-active {
+    border: 1rpx solid #FF8C00;
+    background-color: rgba(255, 190, 33, 0.1);
+    color: #FF8C00;
+}
+
+.attr-pitchup {
+    font-size: 26rpx;
+    margin-top: 30rpx;
+    background: #f2f2f2;
+    padding: 16rpx 36rpx;
+    color: #666666;
+}
+
+.attr-footer {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 36rpx;
+    justify-content: space-between;
+}
+
+.attr-footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.attr-money {
+    font-size: 30rpx;
+    color: #333333;
+    font-weight: bold;
+}
+
+.attr-price {
+    color: #FF5742;
+    font-size: 30rpx;
+}
+
+.attr-footer-right view {
+    padding: 10rpx 18rpx;
+    background-color: #FF8C00;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.food_num_flex {
+    display: flex;
+    align-items: center;
+    height: 50rpx;
+}
+
+.icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.food_add,
+.food_subtraction {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.food_quantity {
+    font-size: 28rpx;
+    margin: 10rpx 18rpx;
+}

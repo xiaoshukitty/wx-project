@@ -1,0 +1,41 @@
+<view class="attr-mask">
+    <view class="center-mask">
+        <view class="attr-conter">
+            <view class="attr-top">
+                <view class="h3">{{specificationFood.name}}</view>
+                <image bind:tap="closeAttr" class="attr-close" src="/static/img/icon/icon_close.png" mode="" />
+            </view>
+            <view class="specification">
+                <view class="attr-text">规格:</view>
+                <view class="attr-list">
+                    <view wx:for="{{specificationFood.attribute}}" data-item="{{item}}" data-index="{{index}}" wx:key="index" class="attr-item {{attrIndex == index ?'attr-active':''}}" bind:tap="selectAttr">
+                        <text>{{item.attrName}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="attr-pitchup">
+                <text class="attr-pitchup-text">已选规格：</text><text>{{attrList[attrIndex].attrName}}</text>
+            </view>
+            <view class="attr-footer">
+                <view class="attr-footer-left">
+                    <view class="attr-money">金额：</view>
+                    <view class="attr-price">¥{{specificationFood.price}}</view>
+                </view>
+                <view wx:if="{{specificationFood.attribute[attrIndex].attrChecked && !specificationFood.count}}" class="attr-footer-right" bind:tap="addFood">
+                    <view>+加入购物车</view>
+                </view>
+                <view class="food_num_flex" wx:else>
+                    <view class="icon">
+                        <image wx:if="{{specificationFood.count>0}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+                    </view>
+                    <view class="food_quantity">
+                        <text wx:if="{{specificationFood.count>0}}">{{specificationFood.count}}</text>
+                    </view>
+                    <view class="icon">
+                        <image catch:tap="addFood" class="food_add" src="/static/img/foods/add.png" mode="" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

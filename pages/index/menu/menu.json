@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "ball-animation": "../../../components/ballAnimation/index",
-    "capsule":"../../../components/capsule/capsule"
+    "capsule":"../../../components/capsule/capsule",
+    "chooseAttr":"/components/chooseAttr/chooseAttr"
   }
 }

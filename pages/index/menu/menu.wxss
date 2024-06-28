@@ -792,6 +792,15 @@
   color: red !important;
 }
 
+.attr {
+  /* padding: 7rpx 16rpx; */
+  padding: 8rpx 18rpx;
+  background-color: #FF8C00;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
 .open_animations {
   animation: no-expend ease .9s forwards;
 }
