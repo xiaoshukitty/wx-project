@@ -1,6 +1,7 @@
 import {
   getImages
-} from "../../utils/images.js"
+} from "../../../utils/images.js"
+
 
 function getnewList() {
   const newList = new Array(20).fill(0)
@@ -19,33 +20,27 @@ function getnewList() {
   return newList
 }
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     list: getnewList(),
     crossAxisCount: 2,
     crossAxisGap: 10,
     mainAxisGap: 10,
   },
+
   onLoad(options) {
 
   },
-  onShow() {
-    let that = this;
-    if (typeof that.getTabBar === 'function') {
-      that.getTabBar().setData({
-        tabbarIndex: 1
-      })
-    }
-    // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
+
+  onReady() {
 
   },
-  skip(e) {
-    const route = e.currentTarget.dataset.skip;
-    wx.navigateTo({
-      url: route
+
+  onShow() {
+
+  },
+  bindscrolltolower() {
+    this.setData({
+      list: this.data.list.concat(getnewList())
     })
   },
-
 })

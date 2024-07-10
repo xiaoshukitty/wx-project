@@ -9,7 +9,8 @@
     "pages/orderPage/orderPage",
     "pages/index/menu/menu",
     "pages/map/map",
-    "pages/index/order/remark/index"
+    "pages/index/order/remark/index",
+    "pages/random/lazyLoading/lazyLoading"
   ],
   "window": {
     "backgroundTextStyle": "light",

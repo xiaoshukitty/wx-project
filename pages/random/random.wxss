@@ -1,11 +1,12 @@
 .random {
   display: flex;
   flex-wrap: wrap;
-  padding: 40rpx;
+  background-color: pink;
+  padding: 30rpx;
 }
 
 .random_skip {
-  width: 670rpx;
+  width: 690rpx;
   height: 300rpx;
   background: aquamarine;
   margin-bottom: 20rpx;
