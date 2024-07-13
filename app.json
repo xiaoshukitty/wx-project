@@ -10,7 +10,8 @@
     "pages/index/menu/menu",
     "pages/map/map",
     "pages/index/order/remark/index",
-    "pages/random/lazyLoading/lazyLoading"
+    "pages/random/lazyLoading/lazyLoading",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

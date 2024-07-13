@@ -1,7 +1,8 @@
 import {
   getImages
 } from "../../../utils/images.js"
-
+var app = getApp();
+const utils = require('../../../utils/index.js')
 
 function getnewList() {
   const newList = new Array(20).fill(0)
@@ -25,10 +26,28 @@ Page({
     crossAxisCount: 2,
     crossAxisGap: 10,
     mainAxisGap: 10,
+    fallsList: []
   },
 
   onLoad(options) {
-
+    let params = {
+      name: ""
+    }
+    app.data.http.post('/dishes/getDishesList', params).then(res => {
+      if (res.code == 200) {
+        const result = utils.flattenTree(res.data, 0);
+        let resArr = [];
+        for (let i = 0; i < result.length; i++) {
+          for (let j = 0; j < result[i].food.length; j++) {
+            resArr.push(result[i].food[j])
+          }
+        }
+        console.log('resArr---', resArr);
+        this.setData({
+          fallsList: resArr
+        })
+      }
+    })
   },
 
   onReady() {

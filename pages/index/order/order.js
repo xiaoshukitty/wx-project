@@ -73,6 +73,8 @@ Page({
     let dishesStr = slet.data.dishesStr;
 
 
+    // wx.vibrateShort(); //震动
+
     formInfo = {
       storeName: '小舒餐厅',
       orderName: '小舒',
@@ -133,8 +135,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           slet.allowSubscribeMessage();
-        } else if (res.cancel) {
-        }
+        } else if (res.cancel) {}
       }
     })
   },
@@ -154,6 +155,7 @@ Page({
             icon: 'loading', //图标有success、error、loading、none四种
             mask: true //显示透明蒙层 防止触摸穿透
           })
+
           slet.formSubmit();
         }
       }
@@ -171,8 +173,7 @@ Page({
       order_data: JSON.stringify(orderList),
     }
     app.data.http.post('/orderList/addFood', prarms).then(res => {
-      if (res.code == 200) {
-      }
+      if (res.code == 200) {}
     })
   }
 })
