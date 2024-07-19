@@ -12,6 +12,48 @@
         </view>
     </view>
 
+    <view class="vip">
+        <view class="vip-line"></view>
+        <view class="vip-inclined"></view>
+    </view>
+
+    <view class="line-40"> </view>
+
+    <view class="order">
+        <view class="qrcode">预约码</view>
+        <view class="my-order" bind:tap="goToOrder">我的订单</view>
+    </view>
+
+    <view class="info">
+        <view class="info-line">
+            <view class="msg">消息中心</view>
+            <view class="right-arrows">
+                <image src="/static/img/icon/rightArrow.png" mode="" />
+            </view>
+        </view>
+        <view class="info-line">
+            <view class="msg">会员规则</view>
+            <view class="right-arrows">
+                <image src="/static/img/icon/rightArrow.png" mode="" />
+            </view>
+        </view>
+        <view class="info-line">
+            <view class="msg">联系客服</view>
+            <view class="right-arrows">
+                <image src="/static/img/icon/rightArrow.png" mode="" />
+            </view>
+        </view>
+        <view class="info-line">
+            <view class="msg">关于我</view>
+            <view class="right-arrows">
+                <image src="/static/img/icon/rightArrow.png" mode="" />
+            </view>
+        </view>
+    </view>
+
+
+
+    <!-- 
     <button class="login-btn mb40" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
         <text>登录/注册</text>
     </button>
@@ -26,7 +68,7 @@
 
     <button class="mb40" bind:tap="formSubmit">
         <text>提交</text>
-    </button>
+    </button> -->
 
 
     <!-- 头像昵称授权 -->
