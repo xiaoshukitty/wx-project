@@ -12,32 +12,36 @@
     margin-bottom: 40rpx;
 }
 
-.info{
+.info {
     margin-top: 40rpx;
 }
-.info-line{
+
+.info-line {
     display: flex;
     justify-content: space-between;
     padding: 20rpx;
 }
-.right-arrows{
+
+.right-arrows {
     width: 30rpx;
     height: 30rpx;
 }
-.msg{
+
+.msg {
     font-size: 28rpx;
 }
 
-.right-arrows image{
+.right-arrows image {
     width: 30rpx;
     height: 30rpx;
 }
 
-.vip{
+.vip {
     position: relative;
     height: 228rpx;
 }
-.vip-line{
+
+.vip-line {
     position: absolute;
     top: 0;
     width: 100%;
@@ -45,7 +49,8 @@
     z-index: 99;
     background-color: #FF8C00;
 }
-.vip-inclined{
+
+.vip-inclined {
     width: 100%;
     position: absolute;
     top: 0;
@@ -54,16 +59,17 @@
     background-color: #E7E7E7;
 }
 
-.line-40{
+.line-40 {
     height: 40rpx;
 }
 
-.order{
+.order {
     margin-top: 20rpx;
     display: flex;
 
 }
-.qrcode{
+
+.qrcode {
     width: 320rpx;
     height: 128rpx;
     background-color: #F5F5F5;
@@ -72,7 +78,8 @@
     text-align: center;
     line-height: 128rpx;
 }
-.my-order{
+
+.my-order {
     width: 320rpx;
     height: 128rpx;
     background-color: #F5F5F5;
@@ -107,4 +114,50 @@
 
 .line {
     margin-top: 200rpx;
+}
+
+.canvas_box1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 550rpx;
+    height: 900rpx;
+    background: #ffffff;
+    z-index: 999;
+    top: 350rpx;
+}
+
+.myCanvas {
+    position: relative;
+    width: 550rpx;
+    height: 900rpx;
+}
+
+.canvas_box2 {
+    position: absolute;
+    bottom: 200rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 550rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    text-align: center;
+    color: #333333;
+    font-size: 28rpx;
+    background: #ffffff;
+    border-top: 1px solid #E5E5E5;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(7, 17, 27, 0.6);
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    z-index: 10000;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

@@ -20,7 +20,7 @@
     <view class="line-40"> </view>
 
     <view class="order">
-        <view class="qrcode">预约码</view>
+        <view class="qrcode" bind:tap="generatePoster">二维码</view>
         <view class="my-order" bind:tap="goToOrder">我的订单</view>
     </view>
 
@@ -73,4 +73,13 @@
 
     <!-- 头像昵称授权 -->
     <authorizedUser show="{{show}}" bind:colseMask="colseMask" bind:updateUser="updateUser"></authorizedUser>
+
+    <!-- 我的二维码 -->
+    <view class="mask" wx:if="{{isShow}}" bind:tap="closeCode">
+        <view class="canvas_box1" catch:tap="openCode">
+            <canvas type="2d" id="myCanvas" class="myCanvas"></canvas>
+        </view>
+        <view class="canvas_box2" catch:tap="savePoster">保存图片</view>
+    </view>
+    <!-- <QRCode wx:if="{{isQRCode}}"></QRCode> -->
 </view>
