@@ -34,7 +34,7 @@
             <view class="center_item center_item_border">
                 <view class="center_order " bind:tap="goToMe">
                     <image src="/static/img/icon/me.png" mode="" />
-                    <view class="center_order_name">我的</view>
+                    <view class="center_order_name">支付</view>
                     <view class="center_order_introduce">自助点餐 方便快捷</view>
                 </view>
             </view>

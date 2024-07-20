@@ -11,7 +11,8 @@
     "pages/map/map",
     "pages/index/order/remark/index",
     "pages/random/lazyLoading/lazyLoading",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/scanPay/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

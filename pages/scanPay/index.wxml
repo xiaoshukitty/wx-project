@@ -1,0 +1,31 @@
+<view class="wrap">
+    <view class="tipFix">
+        <view class="title"></view>
+        <view class="version">
+            <view>
+                <view class="shuru" style="display: block;">
+                    <input class="input1" type="text" placeholder="请点击输入支付金额" value="{{amount}}" maxlength='5' bindinput="bindAmount" disabled='disabled' />
+                    <view class="yuantop">
+                        元
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 键盘 -->
+    <view class="keyboard {{ !keyHidden && 'hind_box' }}">
+        <view class="key-box">
+            <view class="number-box clearfix">
+                <view wx:for="{{KeyboardKeys}}" wx:key="*this" data-key="{{item}}" class="key {{ index === 9 ? 'key-zero' : ''}}" hover-class="number-box-hover" catchtap="handleKey">{{item}}</view>
+            </view>
+            <view class="btn-box">
+                <!-- TODO: 需要替换成删除icon -->
+                <view class="key" hover-class="number-box-hover" data-key="X" catchtap="handleKey">
+                    <image style="width: 50rpx; height: 50rpx; margin-top: 22rpx;" src="/static/img/icon/X.png"></image>
+                </view>
+                <view class="key pay_btn" hover-class="pay-btn-hover" bindtap="bindOpen" wx:if="{{amount>0}}"> <text>支付</text><text class="reduce">({{total}})</text></view>
+                <view class="key pay_btn pay-btn-display" hover-class="pay-btn-hover" wx:else>支付</view>
+            </view>
+        </view>
+    </view>
+</view>

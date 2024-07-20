@@ -16,26 +16,26 @@ Page({
 
   // 去我页面
   goToMe() {
-    wx.switchTab({
-      url: '/pages/mine/mine'
+    wx.navigateTo({
+      url: '/pages/scanPay/index'
     })
   },
   //去点餐页面
-  goToMenu(){
+  goToMenu() {
     wx.navigateTo({
       url: '/pages/index/menu/menu',
     })
   },
 
   //去订单页面
-  goToOrder(){
+  goToOrder() {
     wx.navigateTo({
       url: '/pages/orderPage/orderPage',
     })
   },
 
   //去吃什么转盘页面
-  goToEatFood(){
+  goToEatFood() {
     wx.navigateTo({
       url: '/pages/random/eatFood/index',
     })
