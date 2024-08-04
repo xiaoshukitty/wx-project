@@ -1,9 +1,22 @@
-<view class="random">
-    <!-- 吃什么 -->
-    <view class="random_skip" data-skip="/pages/random/eatFood/index" bind:tap="skip">吃什么</view>
-    <view class="random_skip" data-skip="/pages/random/newEatFood/newEatFood" bind:tap="skip">自己创建</view>
-    <view class="random_skip" data-skip="/pages/test/test" bind:tap="skip">地址</view>
-    <view class="random_skip" data-skip="/pages/random/lazyLoading/lazyLoading" bind:tap="skip">瀑布流</view>
-
-    <!-- 未完待续～～～ -->
+<view class="lazy-loading">
+    <scroll-view type="custom" style="width: 100%; height: 100%; margin-bottom: 200rpx;" bindscrolltolower="bindscrolltolower">
+        <grid-view type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}">
+            <view wx:for="{{fallsList}}" class="grid-box">
+                <image src="{{item.food_img}}" mode="widthFix" binderror="binderror"></image>
+                <view class="content-box">
+                    <text>{{item.name}}</text>
+                    <view class="profile-text">
+                        <view class="left">
+                            <image class="icon" src="https://res.wx.qq.com/op_res/lS41C5Xp6y6mfUbelCW8PArEcMwWRuhSohPO46vAiELbhAf56_CwONEDgM2vIVxOlT5KDcSxCkV8xIJ6cg3x2Q"></image>
+                            <text>binnie</text>
+                        </view>
+                        <view class="right">
+                            <image class="icon-collection" src="https://res.wx.qq.com/community/dist/community/images/disagree_icon_fab2b7.svg"></image>
+                            <text>666</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </grid-view>
+    </scroll-view>
 </view>

@@ -1,8 +1,6 @@
 import {
   getImages
-} from "../../utils/images.js"
-var app = getApp();
-const utils = require('../../utils/index.js')
+} from "../../../utils/images.js"
 
 function getnewList() {
   const newList = new Array(20).fill(0)
@@ -21,39 +19,18 @@ function getnewList() {
   return newList
 }
 Page({
+  /**
+   * 页面的初始数据
+   */
   data: {
     list: getnewList(),
     crossAxisCount: 2,
     crossAxisGap: 10,
     mainAxisGap: 10,
-    fallsList: []
   },
-
   onLoad(options) {
-    let params = {
-      name: ""
-    }
-    app.data.http.post('/dishes/getDishesList', params).then(res => {
-      if (res.code == 200) {
-        const result = utils.flattenTree(res.data, 0);
-        let resArr = [];
-        for (let i = 0; i < result.length; i++) {
-          for (let j = 0; j < result[i].food.length; j++) {
-            resArr.push(result[i].food[j])
-          }
-        }
-        console.log('resArr---', resArr);
-        this.setData({
-          fallsList: resArr
-        })
-      }
-    })
-  },
-
-  onReady() {
 
   },
-
   onShow() {
     let that = this;
     if (typeof that.getTabBar === 'function') {
@@ -62,10 +39,13 @@ Page({
       })
     }
     // 通过 getTabBar 接口获取组件实例，并调用 setData 更新选中态
+
   },
-  bindscrolltolower() {
-    this.setData({
-      list: this.data.list.concat(getnewList())
+  skip(e) {
+    const route = e.currentTarget.dataset.skip;
+    wx.navigateTo({
+      url: route
     })
   },
+
 })
