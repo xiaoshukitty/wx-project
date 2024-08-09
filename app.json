@@ -13,7 +13,8 @@
     "pages/random/lazyLoading/lazyLoading",
     "pages/test/test",
     "pages/scanPay/index",
-    "pages/random/turntable/index"
+    "pages/random/turntable/index",
+    "pages/index/productDetails/productDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

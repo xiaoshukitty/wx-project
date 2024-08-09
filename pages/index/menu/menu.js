@@ -878,6 +878,13 @@ Page({
     );
   },
 
+  //跳转详情
+  goToProductDetails() {
+    wx.navigateTo({
+      url: '../productDetails/productDetails',
+    })
+  },
+
   //开启分享
   onShareAppMessage: function () {
     return {

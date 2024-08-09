@@ -29,7 +29,7 @@
                 <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
                     <view class="title"> {{ item.sort_name }}</view>
                     <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items" data-item="{{items}}">
-                        <view class="food_left">
+                        <view class="food_left" bind:tap="goToProductDetails">
                             <image src="{{items.food_img}}" mode="" />
                         </view>
                         <view class="food_right">
