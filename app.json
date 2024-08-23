@@ -14,7 +14,8 @@
     "pages/test/test",
     "pages/scanPay/index",
     "pages/random/turntable/index",
-    "pages/index/productDetails/productDetails"
+    "pages/index/productDetails/productDetails",
+    "pages/mine/member/member"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,6 +51,12 @@
   "permission": {
     "scope.userLocation": {
       "desc": "获取位置方便快速定位到附近的门店"
+    }
+  },
+  "plugins": {
+    "citySelector": {
+      "version": "1.0.2",
+      "provider": "wx63ffb7b7894e99ae"
     }
   },
   "usingComponents": {

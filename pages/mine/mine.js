@@ -156,7 +156,7 @@ Page({
       show: false
     })
   },
-  openCode(){
+  openCode() {
     return
   },
 
@@ -179,7 +179,12 @@ Page({
   },
 
 
-
+  //跳转到会员页面
+  goToMember() {
+    wx.navigateTo({
+      url: './member/member'
+    })
+  },
 
   submit() {},
 

@@ -1,0 +1,5 @@
+<view class="member">
+    会员页面
+    <view>选择的城市：{{city.name}}</view>
+    <button type="primary" bindtap="goChooseCity">选择城市</button>
+</view>

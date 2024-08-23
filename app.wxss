@@ -2,9 +2,11 @@ page {
   width: 100vw;
   font-size: 24rpx;
   color: #0d0d0d;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
+  background: #fff;
+
   font-family: PingFang-SC-Medium;
-  
+
 }
 
 /* 全局去掉 scroll-view 滚动条 */

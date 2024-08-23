@@ -12,7 +12,7 @@
         </view>
     </view>
 
-    <view class="vip">
+    <view class="vip" bind:tap="goToMember">
         <view class="vip-line"></view>
         <view class="vip-inclined"></view>
     </view>
