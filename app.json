@@ -50,7 +50,7 @@
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {
-      "desc": "获取位置方便快速定位到附近的门店"
+      "desc": "获取位置方便快速定位到你附近"
     }
   },
   "plugins": {
