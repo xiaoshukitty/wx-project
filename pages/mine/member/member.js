@@ -20,7 +20,7 @@ Page({
   goChooseCity() {
     const key = 'XYBBZ-HC4CX-KBC4J-TMCM3-OZLX2-SVFGX'; // 使用在腾讯位置服务申请的key
     const referer = 'wx-project'; // 调用插件的app的名称
-    const hotCitys = '北京,上海,天津,重庆,广州,深圳,成都,杭州'; // 用户自定义的的热门城市
+    const hotCitys = '北京,上海,武汉,重庆,广州,深圳,成都,杭州'; // 用户自定义的的热门城市
     wx.navigateTo({
       url: `plugin://citySelector/index?key=${key}&referer=${referer}&hotCitys=${hotCitys}`,
     })
