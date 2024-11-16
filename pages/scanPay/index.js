@@ -51,6 +51,7 @@ Page({
     const {
       amount
     } = this.data
+    wx.vibrateShort()
     // 删除金额
     if (key === 'X') {
       if (amount !== '') {
