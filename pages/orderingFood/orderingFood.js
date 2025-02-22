@@ -1,5 +1,6 @@
 const ballFallAnimation = require("../../utils/ballFallAnimation");
-const utils = require('../../utils/index.js')
+const utils = require('../../utils/index.js');
+
 var app = getApp();
 Page({
   data: {
@@ -27,6 +28,7 @@ Page({
     scrollHeight: '',
   },
 
+
   onLoad: function (options) {
     // 设置购物车位置
     this.busPos = {};
@@ -50,6 +52,7 @@ Page({
       tabbarIndex: 1
     })
   },
+
   //打开购物车
   openCartShow() {
     let slet = this;
@@ -139,14 +142,7 @@ Page({
     }
 
     // 震动
-    wx.vibrateShort({
-      success: function () {
-        console.log("震动成功！");
-      },
-      fail: function () {
-        console.log("震动失败！");
-      }
-    });
+    wx.vibrateShort({});
 
     slet.setData({
       foodsList,
@@ -156,6 +152,7 @@ Page({
     if (!e.detail.id) {
       slet.tapAdd(e);
     }
+    slet.observersWatch();
 
   },
 
@@ -190,6 +187,7 @@ Page({
     }
     slet.sumCartMoeny();
     slet.getScrollHegiht();
+
     wx.setStorageSync('CartFoodS', cartFoodList)
     slet.setData({
       foodsList,
@@ -201,6 +199,32 @@ Page({
         cartShow: false,
       })
     }
+
+    slet.observersWatch();
+  },
+
+  //计算左侧商品的数量
+  observersWatch() {
+    let slet = this;
+    let cartFoodList = slet.data.cartFoodList;
+    let foodsList = slet.data.foodsList;
+    if (cartFoodList && cartFoodList.length > 0) {
+      for (let i = 0; i < foodsList.length; i++) {
+        foodsList[i].cartNum = 0;
+        for (let j = 0; j < cartFoodList.length; j++) {
+          if (foodsList[i].id == cartFoodList[j].uid) {
+            foodsList[i].cartNum++;
+          }
+        }
+      }
+    } else {
+      for (let i = 0; i < foodsList.length; i++) {
+        foodsList[i].cartNum = 0;
+      }
+    }
+    slet.setData({
+      foodsList
+    })
   },
 
   //打开菜品规格
@@ -228,6 +252,7 @@ Page({
     })
   },
 
+  //计算底部购物车底部滚动的距离
   getScrollHegiht() {
     let slet = this;
     let cartFoodList = slet.data.cartFoodList;
@@ -258,7 +283,7 @@ Page({
           for (let i = 0; i < res.data.length; i++) {
             for (let k = 0; k < cartFoodList.length; k++) {
               if (res.data[i].id === cartFoodList[k].id) {
-                res.data[i].count = cartFoodList[k].count
+                res.data[i].count = cartFoodList[k].count;
               }
             }
           }
@@ -289,6 +314,7 @@ Page({
       foodsList,
       cartShow: false,
     })
+    slet.observersWatch();
     slet.sumCartMoeny();
   },
 
@@ -401,7 +427,7 @@ Page({
 
   tapAdd(e) {
     // 简单判断手指点击位置是否是上次点击的位置，若是，直接是用上一次计算的关键帧数组
-    console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
+    // console.log('输出当前点击为位置', this.data.bus_y, e.touches["0"].clientY)
     if (Math.abs(this.data.bus_y - e.touches["0"].clientY) > 20) {
       this.data.keyFrames = [];
       this.data.bus_y = e.touches["0"].clientY;

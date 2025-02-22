@@ -7,11 +7,7 @@
     <!-- 地址 -->
     <shopAddress />
 
-    <!-- 消息滚动 -->
-    <!-- <view class="roll">
-        小舒餐厅开业
-    </view> -->
-
+    <!-- 点餐 -->
     <view class="content">
         <view class="sort">
             <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 517rpx)':'height: calc(100vh - 487rpx)'}}">
@@ -19,6 +15,7 @@
                     <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">
                         <view class="{{ nowIndex==index?'active-line':'' }}"></view>
                         {{item.sort_name}}
+                        <view class="cart-num" wx:if="{{item.cartNum && item.cartNum>0}}">{{item.cartNum}}</view>
                     </view>
                 </view>
             </scroll-view>
@@ -59,7 +56,7 @@
             </scroll-view>
         </view>
     </view>
-    <view>{{closeAnimations}}</view>
+
 
     <!-- 购物车数据 -->
     <page-container show="{{cartShow}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" custom-style="{{customStyle}}">
