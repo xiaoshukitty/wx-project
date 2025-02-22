@@ -15,7 +15,8 @@
     "pages/scanPay/index",
     "pages/random/turntable/index",
     "pages/index/productDetails/productDetails",
-    "pages/mine/member/member"
+    "pages/mine/member/member",
+    "pages/orderingFood/orderingFood"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,8 +34,8 @@
         "selectedIconPath": "/static/img/tabbar/home_yes.png"
       },
       {
-        "pagePath": "pages/random/random",
-        "text": "随机",
+        "pagePath": "pages/orderingFood/orderingFood",
+        "text": "点餐",
         "iconPath": "/static/img/tabbar/random_no.png",
         "selectedIconPath": "/static/img/tabbar/random_yes.png"
       },

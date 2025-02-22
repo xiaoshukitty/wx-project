@@ -22,8 +22,8 @@ Component({
       selectedIconPath: '/static/img/tabbar/home_yes.png'
     }, {
       id: '1',
-      text: '随机',
-      pagePath: '/pages/random/random',
+      text: '点餐',
+      pagePath: '/pages/orderingFood/orderingFood',
       iconPath: '/static/img/tabbar/random_no.png',
       selectedIconPath: '/static/img/tabbar/random_yes.png',
     }, {
@@ -50,11 +50,11 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset;
       const url = data.path;
-      if(getCurrentPages()[0].route==url){
+      if (getCurrentPages()[0].route == url) {
         return
       }
-      
-      
+
+
       wx.switchTab({
         url
       })

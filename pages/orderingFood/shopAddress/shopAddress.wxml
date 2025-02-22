@@ -1,0 +1,19 @@
+<view class="shopAddress">
+    <view class="shop-box">
+        <view class="address">
+            <view class="shop-name">黄州开发区万达店</view>
+            <view class="shop-distance">距离1.1km</view>
+        </view>
+        <view class="shop-type">
+            <view class="shop-capsule" bind:tap="changeCapsule">
+                <!-- <view data-item='a' class="active">堂食</view>
+            <view data-item='b' >外卖</view> -->
+                <view wx:for="{{capsuleType}}" wx:key="index" data-index="{{index}}" class="{{activeIndex==index?'active':''}}">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="shop-offers">
+        <view class="shop-offers-info">满0.01，低至3.0加购指定商品</view>
+        <view>点击查看</view>
+    </view>
+</view>

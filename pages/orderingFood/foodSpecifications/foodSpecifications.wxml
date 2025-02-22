@@ -1,0 +1,5 @@
+<view class="specifications">
+    <page-container show="{{cartShow}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" custom-style="{{customStyle}}">
+        123
+    </page-container>
+</view>

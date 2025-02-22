@@ -1,0 +1,119 @@
+<view class="container">
+    <!-- 头部背景图 -->
+    <view class="header">
+        <image mode="{{widthFix}}" src="/static/img/foods/food.jpg" mode="" />
+    </view>
+
+    <!-- 地址 -->
+    <shopAddress />
+
+    <!-- 消息滚动 -->
+    <!-- <view class="roll">
+        小舒餐厅开业
+    </view> -->
+
+    <view class="content">
+        <view class="sort">
+            <scroll-view scroll-y style="{{isIphoneX?'height: calc(100vh - 517rpx)':'height: calc(100vh - 487rpx)'}}">
+                <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{ index }}">
+                    <view class="stort_name {{ nowIndex==index?'active':'' }}" data-index="{{ index }}" bindtap="tabNav">
+                        <view class="{{ nowIndex==index?'active-line':'' }}"></view>
+                        {{item.sort_name}}
+                    </view>
+                </view>
+            </scroll-view>
+
+        </view>
+        <view class="product">
+            <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 517rpx)':'height: calc(100vh - 487rpx)'}}">
+                <view wx:for="{{foodsList}}" wx:key="index" id="scroll-{{index}}" class="good_item">
+                    <view class="title"> {{ item.sort_name }}</view>
+                    <view wx:for="{{item.food}}" wx:key="indexs" class="food_box" wx:for-index="indexs" wx:for-item="items" data-item="{{items}}">
+                        <view class="food_left" bind:tap="goToProductDetails">
+                            <image src="{{items.food_img}}" mode="" />
+                        </view>
+                        <view class="food_right">
+                            <view class="food_info">
+                                <view class="name">{{ items.name }}</view>
+                                <view class="price price_color">￥{{ items.price }}</view>
+                            </view>
+                            <view class="food_num">
+                                <view class="food_num_flex" wx:if="{{items.attribute==null}}">
+                                    <view class="icon">
+                                        <image data-item="{{items}}" wx:if="{{items.count>0}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+                                    </view>
+                                    <view class="food_quantity">
+                                        <text wx:if="{{items.count>0}}">{{items.count}}</text>
+                                    </view>
+                                    <view class="icon">
+                                        <image data-item="{{items}}" catch:tap="addFood" class="food_add" src="/static/img/foods/add.png" mode="" />
+                                    </view>
+                                </view>
+                                <view class="attr" data-item="{{items}}" wx:else bind:tap="openAttr">
+                                    <view>选规格</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view>{{closeAnimations}}</view>
+
+    <!-- 购物车数据 -->
+    <page-container show="{{cartShow}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" custom-style="{{customStyle}}">
+        <view class="cart_box">
+            <view class="cart_close">
+                <view bind:tap="clearCart" style="padding-right: 20rpx;text-align: right;height: 50rpx;">清空购物车</view>
+                <view style="padding-bottom: 320rpx;height: {{scrollHeight + 'px' }}">
+                    <scroll-view class="cart_list" scroll-y style="height: {{scrollHeight + 'px' }}">
+                        <view class="cart_item_box">
+                            <view id="scrollView" class="cart_item" wx:for="{{cartFoodList}}" wx:key="index">
+                                <view class="cart_item_img">
+                                    <image src="{{item.food_img}}" mode="" />
+                                </view>
+                                <view class="cart_item_content">
+                                    <view class="cart_item_food">
+                                        <view class="cart_item_name">{{item.name}}
+                                            <text wx:for="{{item.attribute}}" wx:for-item="items" data-item="{{items}}" wx:if="{{items.attrChecked}}">({{items.attrName}})</text>
+                                        </view>
+                                        <view class="cart_item_price price_color">{{item.price}}</view>
+                                    </view>
+                                    <view class="cart_sub">
+                                        <view class="icon">
+                                            <image data-item="{{item}}" catch:tap="subtractionFood" class="food_subtraction" src="/static/img/foods/subtraction.png" mode="" />
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+    </page-container>
+
+    <!-- 选规格 -->
+    <chooseAttr id="chooseAttr" wx:if="{{showAttr}}" selectFoods="{{selectFoods}}" bind:closePopUp="closePopUp" bind:addFood="addFood" bind:subtractionFood="subtractionFood"></chooseAttr>
+    <!-- <foodSpecifications wx:if="{{true}}"/> -->
+
+    <!-- 底部购物车 -->
+    <view class="footer">
+        <view class="footer_bg">
+            <view class="footer_cart">
+                <image bind:tap="openCartShow" src="/static/img/foods/cart.png" mode="" />
+                <view class="round" wx:if="{{cartFoodList.length!=0}}">{{cartFoodList.length}}</view>
+                <view class="sum">总计:{{total}}</view>
+            </view>
+            <view class="footer_submit" bind:tap="goOrder">
+                <text>去结算</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 小球动画 -->
+    <block wx:for="{{ballAnimationArray}}" wx:key="index">
+        <ball-animation bind:endAnimation="endAnimation" ballIndex="{{index}}" id="ball-{{index}}"></ball-animation>
+    </block>
+</view>

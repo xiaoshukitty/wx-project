@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "ball-animation": "/components/ballAnimation/index",
+    "chooseAttr":"/components/chooseAttr/chooseAttr",
+    "shopAddress":"./shopAddress/shopAddress",
+    "foodSpecifications":"./foodSpecifications/foodSpecifications"
+  }
+}
