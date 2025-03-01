@@ -1,4 +1,4 @@
 {
-  "component": true,
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "toBack":"/components/toBack/toBack"
 }

@@ -1,0 +1,3 @@
+<view class="back-btn" bindtap="onBack" style="height:{{capsuleHeight +'px'}}; width: {{capsuleHeight +'px'}};left: {{capsuleRight + 'px'}}; top: {{capsuleTop + 'px'}};">
+    <image src="/static/img/icon/back.png" mode="aspectFit" class="back-icon"></image>
+</view>

@@ -1,0 +1,14 @@
+.back-btn {
+    position: fixed;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: .8;
+}
+
+.back-icon {
+    width: 30rpx;
+    height: 30rpx;
+}

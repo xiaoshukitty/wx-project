@@ -19,7 +19,6 @@
                     </view>
                 </view>
             </scroll-view>
-
         </view>
         <view class="product">
             <scroll-view scroll-y id="scrollMenu" scroll-with-animation scroll-into-view="{{tabIndex}}" bindscroll="rightScroll" style="{{isIphoneX?'height: calc(100vh - 517rpx)':'height: calc(100vh - 487rpx)'}}">

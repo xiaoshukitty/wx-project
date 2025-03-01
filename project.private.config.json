@@ -5,18 +5,6 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/orderingFood/orderingFood",
-          "pathName": "pages/orderingFood/orderingFood",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        }
-      ]
-    }
-  },
+  "condition": {},
   "libVersion": "2.32.3"
 }

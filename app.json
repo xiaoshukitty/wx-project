@@ -16,7 +16,8 @@
     "pages/random/turntable/index",
     "pages/index/productDetails/productDetails",
     "pages/mine/member/member",
-    "pages/orderingFood/orderingFood"
+    "pages/orderingFood/orderingFood",
+    "pages/orderingFood/foodSpecifications/foodSpecifications"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -63,7 +64,8 @@
   "usingComponents": {
     "cartcontrol": "/components/cartcontrol/cartcontrol",
     "ballAnimation": "/components/ballAnimation/index",
-    "authorizedUser": "/components/authorizedUser/index"
+    "authorizedUser": "/components/authorizedUser/index",
+    "toBack": "/components/toBack/toBack"
   },
   "requiredPrivateInfos": [
     "getLocation"

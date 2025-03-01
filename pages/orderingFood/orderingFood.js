@@ -230,17 +230,21 @@ Page({
   //打开菜品规格
   openAttr(e) {
     let slet = this;
-    // let selectFoods = e.currentTarget.dataset.item;
+    let selectFoods = e.currentTarget.dataset.item;
 
 
     this.busPos["x"] = 80 //购物车的位置
+    wx.navigateTo({
+      url: './foodSpecifications/foodSpecifications',
+    })
+    return
     slet.setData({
       showAttr: true,
-      // selectFoods
+      selectFoods
     })
 
     //传递数据给 chooseAttr 组件
-    // slet.selectComponent("#chooseAttr").specData(selectFoods);
+    slet.selectComponent("#chooseAttr").specData(selectFoods);
   },
 
   //关闭菜品规格

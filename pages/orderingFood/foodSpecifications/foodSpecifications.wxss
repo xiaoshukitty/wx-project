@@ -1,2 +1,118 @@
-.specifications{
+.specifications {
+    position: relative;
+}
+
+.bj-img {
+    width: 100%;
+    height: 480rpx;
+}
+
+.bj-img image {
+    width: 100%;
+    height: 100%;
+}
+
+.specifications-content {
+    position: absolute;
+    top: 460rpx;
+    left: 0;
+    width: 100%;
+    border-radius: 20rpx 20rpx 0 0;
+    background-color: #e5e5e5;
+    box-sizing: border-box;
+    height: calc(100vh - 480rpx);
+}
+
+.specifications-atrr {
+    border-radius: 20rpx 20rpx 0 0;
+    background-color: #fff;
+}
+
+.specifications-box {
+    padding: 30rpx;
+}
+
+.food-title {
+    margin-bottom: 50rpx;
+}
+
+.food-title view:nth-child(1) {
+    font-weight: 700;
+    font-size: 34rpx;
+}
+
+
+.food-title view:nth-child(2) {
+    font-size: 24rpx;
+    color: silver;
+    margin: 5rpx 0 20rpx;
+}
+
+.choose-specifications {
+    display: flex;
+    margin-top: 20rpx;
+}
+
+.choose-specifications-name {
+    font-weight: 500;
+    font-size: 28rpx;
+    margin-right: 20rpx;
+    /* width: 0rpx; */
+    margin-top: 10rpx;
+}
+
+.choose-specifications-type {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.choose-block {
+    box-sizing: border-box;
+    width: 180rpx;
+    padding: 16rpx 00;
+    text-align: center;
+    background-color: #e5e5e5;
+    border-radius: 10rpx;
+    margin: 0 15rpx 20rpx 0;
+}
+
+.choose-active {
+    color: #fff;
+    background-color: #FF8C00;
+}
+
+.specifications-bottom {}
+
+.food-introduction {
+    margin-top: 20rpx;
+    background-color: #fff;
+    padding: 20rpx;
+    border-radius: 20rpx;
+}
+
+.introduction-title {
+    font-size: 28rpx;
+    font-weight: 700;
+    margin-bottom: 5rpx;
+    color: #000 !important;
+}
+
+.food-introduction view {
+    color: silver;
+}
+
+.food-introduction view:nth-child(3) {
+    margin: 30rpx 0 5rpx 0;
+}
+
+.footer-price {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 180rpx;
+    width: 100%;
+    background-color: pink;
+    border-top: 1rpx solid #000;
 }

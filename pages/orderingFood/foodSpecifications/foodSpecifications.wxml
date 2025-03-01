@@ -1,5 +1,60 @@
 <view class="specifications">
-    <page-container show="{{cartShow}}" round="{{round}}" overlay="{{overlay}}" duration="{{duration}}" position="{{position}}" close-on-slide-down="{{false}}" custom-style="{{customStyle}}">
-        123
-    </page-container>
+    <!-- 顶部导航 -->
+    <toBack isFlag="{{true}}" />
+    <!-- 背景图 -->
+    <view class="bj-img">
+        <image src="https://img-baofun.zhhainiao.com/pcwallpaper_ugc/static/ea1338f685ec2c7b4348ba5e17f08dd0.jpg?x-oss-process=image%2fresize%2cm_lfit%2cw_1920%2ch_1080" mode="" />
+    </view>
+    <view class="specifications-content">
+        <view class="specifications-atrr">
+            <view class="specifications-box">
+                <view class="food-title">
+                    <view>小黄油拿铁</view>
+                    <view>含法国进口总统黄油 ｜ 液态爆米花</view>
+                </view>
+                <view class="choose-specifications">
+                    <view class="choose-specifications-name">
+                        杯型
+                    </view>
+                    <view class="choose-specifications-type">
+                        <view class="choose-block choose-active">大杯</view>
+                    </view>
+                </view>
+                <view class="choose-specifications">
+                    <view class="choose-specifications-name">
+                        温度
+                    </view>
+                    <view class="choose-specifications-type">
+                        <view class="choose-block choose-active">冰</view>
+                        <view class="choose-block">热</view>
+                    </view>
+                </view>
+                <view class="choose-specifications">
+                    <view class="choose-specifications-name">
+                        糖度
+                    </view>
+                    <view class="choose-specifications-type">
+                        <view class="choose-block choose-active">标准糖</view>
+                        <view class="choose-block">少甜</view>
+                        <view class="choose-block">少少甜</view>
+                        <view class="choose-block">微甜</view>
+                        <view class="choose-block">不另外加糖</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="food-introduction">
+            <view class="introduction-title">主要原料</view>
+            <view>浓缩咖啡、椰浆饮品</view>
+            <view>图片即包装仅供参考，请以实物为准</view>
+            <view>尽快享用风味更加~</view>
+        </view>
+    </view>
+
+    <view class="footer-price">
+        <view>
+            <view>加入购物车</view>
+            <view>立即购买</view>
+        </view>
+    </view>
 </view>
